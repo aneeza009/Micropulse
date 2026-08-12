@@ -17,7 +17,7 @@ export function WhyChooseUs() {
   return (
     <section id="why-us" className="relative scroll-mt-24 py-20 md:py-28">
       <div className="container-x">
-        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
           <SectionHeading
             eyebrow="Why Choose Us"
             title={
@@ -30,7 +30,7 @@ export function WhyChooseUs() {
             intro="Every MicroPulse installation is delivered by an experienced team to a single standard — safe, clean and made to last."
           />
 
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {WHY_US.map((claim, i) => {
               const Icon = ICONS[i % ICONS.length];
               return (

@@ -70,7 +70,7 @@ export function SavingsCalculator() {
         />
 
         <Reveal delay={0.1}>
-          <div className="card mt-12 grid gap-8 p-7 md:grid-cols-[0.95fr_1.05fr] md:p-10 lg:gap-12">
+          <div className="card mt-12 grid grid-cols-1 gap-8 p-7 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] md:p-10 lg:gap-12">
             {/* Inputs */}
             <div className="flex flex-col justify-center">
               <label
@@ -147,7 +147,7 @@ export function SavingsCalculator() {
                 </div>
               </div>
 
-              <a href="#contact" className="btn btn-primary mt-5 w-full focus-ring">
+              <a href="/contact" className="btn btn-primary mt-5 w-full focus-ring">
                 Book a Free Site Visit for Exact Figures
               </a>
             </div>

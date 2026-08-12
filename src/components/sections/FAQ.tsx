@@ -11,7 +11,7 @@ export function FAQ() {
 
   return (
     <section id="faq" className="relative scroll-mt-24 py-20 md:py-28">
-      <div className="container-x grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+      <div className="container-x grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
         <SectionHeading
           eyebrow="FAQ"
           title={

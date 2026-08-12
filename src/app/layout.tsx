@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Sora, Inter } from "next/font/google";
 import { COMPANY } from "@/lib/company";
+import { Navbar } from "@/components/sections/Navbar";
+import { Footer } from "@/components/sections/Footer";
+import { FloatingActions } from "@/components/ui/FloatingActions";
 import "./globals.css";
 
 const sora = Sora({
@@ -101,7 +104,10 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        {children}
+        <Navbar />
+        <main id="main">{children}</main>
+        <Footer />
+        <FloatingActions />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

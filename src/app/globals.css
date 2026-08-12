@@ -122,12 +122,14 @@ body::after {
   color: #fff;
 }
 
-h1, h2, h3, h4 {
-  font-family: var(--font-sora), system-ui, sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.05;
-  color: var(--text-hi);
+@layer base {
+  h1, h2, h3, h4 {
+    font-family: var(--font-sora), system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    color: var(--text-hi);
+  }
 }
 
 /* --- Utilities --- */

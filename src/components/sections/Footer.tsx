@@ -17,7 +17,7 @@ export function Footer() {
           </p>
         </div>
 
-        <div className="grid gap-10 border-t border-[var(--line)] py-12 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+        <div className="grid grid-cols-1 gap-10 border-t border-[var(--line)] py-12 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1.2fr)]">
           {/* brand */}
           <div>
             <span className="inline-flex rounded-md bg-white px-2.5 py-1.5">
@@ -57,7 +57,7 @@ export function Footer() {
               {SERVICES.slice(0, 5).map((s) => (
                 <li key={s.id}>
                   <a
-                    href="#services"
+                    href="/services"
                     className="text-sm text-text-mid transition-colors hover:text-orange"
                   >
                     {s.title.replace(" — All Over Pakistan", "")}

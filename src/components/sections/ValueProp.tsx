@@ -22,7 +22,7 @@ export function ValueProp() {
           intro="The smart choice for smart people — durable engineering that pays you back."
         />
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {VALUE_PROPS.map((v, i) => {
             const Icon = ICONS[i % ICONS.length];
             return (

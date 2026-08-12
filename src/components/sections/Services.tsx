@@ -49,7 +49,7 @@ export function Services() {
           intro="From the first consultation to long-term maintenance and nationwide supply — one engineering team for the whole journey."
         />
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((s, i) => {
             const Icon = ICONS[s.id];
             return (

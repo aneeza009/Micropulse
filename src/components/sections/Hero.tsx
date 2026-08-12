@@ -47,13 +47,13 @@ export function Hero() {
         <source src="/media/hero-solar.mp4" type="video/mp4" />
       </video>
 
-      {/* Legibility overlays (brand-tinted) */}
+      {/* Legibility overlays (brand-tinted, strong enough for white text) */}
       <div
         aria-hidden
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(90deg, rgba(20,10,30,0.92) 0%, rgba(20,10,30,0.68) 42%, rgba(20,10,30,0.15) 100%)",
+            "linear-gradient(90deg, rgba(14,8,22,0.96) 0%, rgba(14,8,22,0.82) 38%, rgba(14,8,22,0.4) 72%, rgba(14,8,22,0.15) 100%)",
         }}
       />
       <div
@@ -61,7 +61,7 @@ export function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(0deg, rgba(20,10,30,0.9) 0%, transparent 42%), radial-gradient(60% 50% at 85% 12%, rgba(99,30,136,0.35), transparent 60%)",
+            "linear-gradient(0deg, rgba(14,8,22,0.92) 0%, rgba(14,8,22,0.2) 38%, transparent 60%), radial-gradient(60% 50% at 85% 12%, rgba(99,30,136,0.3), transparent 60%)",
         }}
       />
 
@@ -75,24 +75,24 @@ export function Hero() {
         >
           <span className="eyebrow mb-6">Solar Engineering · Pakistan</span>
 
-          <h1 className="mt-5 text-[13vw] leading-[0.92] text-white sm:text-6xl md:text-7xl lg:text-[5.4rem]">
+          <h1 className="mt-5 text-[12vw] leading-[0.95] text-white [text-shadow:0_2px_24px_rgba(0,0,0,0.55)] sm:text-6xl md:text-7xl lg:text-[5.4rem]">
             <span className="block">Powering Today.</span>
             <span className="block text-gradient-solar bright">
               Energizing Tomorrow.
             </span>
           </h1>
 
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-white/80 md:text-lg">
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-white/85 [text-shadow:0_1px_12px_rgba(0,0,0,0.5)] md:text-lg">
             {COMPANY.intro} Smart solar solutions engineered for reliability,
             savings and a cleaner future.
           </p>
 
           {/* CTAs */}
           <div className="mt-9 flex flex-wrap items-center gap-3">
-            <a href="#contact" className="btn btn-primary focus-ring">
+            <a href="/contact" className="btn btn-primary focus-ring">
               Book a Free Site Visit <ArrowIcon className="h-4 w-4" />
             </a>
-            <a href="#contact" className="btn btn-ghost focus-ring">
+            <a href="/contact" className="btn btn-ghost focus-ring">
               Get a Free Consultation
             </a>
           </div>

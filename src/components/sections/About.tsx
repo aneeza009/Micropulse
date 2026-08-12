@@ -14,7 +14,7 @@ const expertise = [
 export function About() {
   return (
     <section id="about" className="relative scroll-mt-24 py-20 md:py-28">
-      <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <div className="container-x grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
         {/* Left — story */}
         <div>
           <Reveal>
@@ -55,7 +55,7 @@ export function About() {
           </Reveal>
 
           <Reveal delay={0.2}>
-            <a href="#contact" className="btn btn-primary mt-9 focus-ring">
+            <a href="/contact" className="btn btn-primary mt-9 focus-ring">
               Book a Free Site Visit
             </a>
           </Reveal>

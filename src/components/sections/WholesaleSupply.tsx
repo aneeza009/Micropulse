@@ -13,7 +13,7 @@ export function WholesaleSupply() {
   return (
     <section className="relative scroll-mt-24 py-20 md:py-28">
       <div className="container-x">
-        <div className="card grid items-center gap-10 overflow-hidden p-8 md:grid-cols-2 md:p-12 lg:gap-16">
+        <div className="card grid grid-cols-1 items-center gap-10 overflow-hidden p-8 md:grid-cols-2 md:p-12 lg:gap-16">
           <div>
             <Reveal>
               <span className="eyebrow">Wholesale Supply</span>
@@ -44,7 +44,7 @@ export function WholesaleSupply() {
               </ul>
             </Reveal>
             <Reveal delay={0.2}>
-              <a href="#contact" className="btn btn-primary mt-8 focus-ring">
+              <a href="/contact" className="btn btn-primary mt-8 focus-ring">
                 <TruckIcon className="h-4 w-4" /> Enquire About Supply
               </a>
             </Reveal>

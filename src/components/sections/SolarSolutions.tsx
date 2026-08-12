@@ -64,7 +64,7 @@ export function SolarSolutions() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.4 }}
-            className="card mt-6 grid gap-8 p-7 md:grid-cols-2 md:p-10 lg:gap-12"
+            className="card mt-6 grid grid-cols-1 gap-8 p-7 md:grid-cols-2 md:p-10 lg:gap-12"
           >
             {/* copy */}
             <div className="flex flex-col justify-center">
@@ -75,7 +75,7 @@ export function SolarSolutions() {
                 {sol.title}
               </h3>
               <p className="mt-4 text-text-mid md:text-lg">{sol.desc}</p>
-              <a href="#contact" className="btn btn-ghost mt-7 w-fit focus-ring">
+              <a href="/contact" className="btn btn-ghost mt-7 w-fit focus-ring">
                 Discuss this system
               </a>
             </div>
