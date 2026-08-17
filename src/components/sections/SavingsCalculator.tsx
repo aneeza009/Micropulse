@@ -38,6 +38,8 @@ export function SavingsCalculator() {
     };
   }, [bill, type]);
 
+  const fillPct = ((bill - 5000) / (300000 - 5000)) * 100;
+
   const types: { id: SysType; label: string }[] = [
     { id: "grid", label: "On-Grid" },
     { id: "hybrid", label: "Hybrid" },
@@ -70,7 +72,7 @@ export function SavingsCalculator() {
         />
 
         <Reveal delay={0.1}>
-          <div className="card mt-12 grid grid-cols-1 gap-8 p-7 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] md:p-10 lg:gap-12">
+          <div className="card mt-12 grid grid-cols-1 gap-8 p-5 sm:p-7 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] md:p-10 lg:gap-12">
             {/* Inputs */}
             <div className="flex flex-col justify-center">
               <label
@@ -79,7 +81,7 @@ export function SavingsCalculator() {
               >
                 Average monthly electricity bill
               </label>
-              <div className="mt-4 font-display text-4xl font-extrabold text-gradient-solar">
+              <div className="mt-3 font-display text-3xl font-extrabold text-gradient-solar sm:text-4xl">
                 {fmtPKR(bill)}
               </div>
               <input
@@ -90,10 +92,11 @@ export function SavingsCalculator() {
                 step={5000}
                 value={bill}
                 onChange={(e) => setBill(Number(e.target.value))}
-                className="mt-5 w-full accent-[var(--brand-orange)]"
+                className="range-solar mt-3"
+                style={{ ["--range-fill" as string]: `${fillPct}%` }}
                 aria-valuetext={fmtPKR(bill)}
               />
-              <div className="mt-1 flex justify-between text-xs text-text-lo">
+              <div className="flex justify-between text-xs text-text-lo">
                 <span>PKR 5k</span>
                 <span>PKR 300k</span>
               </div>
@@ -101,12 +104,12 @@ export function SavingsCalculator() {
               <span className="mt-8 font-display text-sm font-semibold text-text-hi">
                 System preference
               </span>
-              <div className="mt-3 flex gap-2">
+              <div className="mt-3 grid grid-cols-3 gap-2">
                 {types.map((t) => (
                   <button
                     key={t.id}
                     onClick={() => setType(t.id)}
-                    className={`flex-1 rounded-full border px-3 py-2 text-sm font-semibold transition-all focus-ring ${
+                    className={`min-h-11 rounded-full border px-2 py-2 text-sm font-semibold transition-all focus-ring ${
                       type === t.id
                         ? "border-transparent bg-gradient-to-r from-gold to-orange text-[#1a0f02]"
                         : "border-[var(--line-strong)] text-text-mid hover:text-text-hi"
@@ -123,22 +126,22 @@ export function SavingsCalculator() {
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-orange/40 bg-orange/12 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-orange">
                 Estimate only
               </div>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
                 {outputs.slice(0, 4).map((o) => (
                   <div
                     key={o.label}
-                    className="rounded-xl border border-[var(--line)] bg-[var(--surface-2)] p-4"
+                    className="min-w-0 rounded-xl border border-[var(--line)] bg-[var(--surface-2)] p-3.5 sm:p-4"
                   >
-                    <div className="text-xs uppercase tracking-wider text-text-lo">
+                    <div className="text-[11px] uppercase tracking-wider text-text-lo sm:text-xs">
                       {o.label}
                     </div>
-                    <div className="mt-2 font-display text-xl font-bold text-text-hi">
+                    <div className="mt-2 font-display text-base font-bold tabular-nums text-text-hi sm:text-xl">
                       {o.value}
                     </div>
                   </div>
                 ))}
-                <div className="col-span-2 rounded-xl border border-orange/40 bg-gradient-to-r from-gold/10 to-orange/5 p-4">
-                  <div className="text-xs uppercase tracking-wider text-text-lo">
+                <div className="col-span-2 min-w-0 rounded-xl border border-orange/40 bg-gradient-to-r from-gold/10 to-orange/5 p-3.5 sm:p-4">
+                  <div className="text-[11px] uppercase tracking-wider text-text-lo sm:text-xs">
                     {outputs[4].label}
                   </div>
                   <div className="mt-2 font-display text-2xl font-extrabold text-gradient-solar">
@@ -147,7 +150,10 @@ export function SavingsCalculator() {
                 </div>
               </div>
 
-              <a href="/contact" className="btn btn-primary mt-5 w-full focus-ring">
+              <a
+                href="/contact"
+                className="btn btn-primary btn-wrap mt-5 w-full focus-ring"
+              >
                 Book a Free Site Visit for Exact Figures
               </a>
             </div>

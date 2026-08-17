@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { Reveal } from "@/components/ui/primitives";
 import { CheckIcon } from "@/components/ui/icons";

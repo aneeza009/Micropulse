@@ -1,17 +1,32 @@
 import Image from "next/image";
 
-export function Logo({ className = "" }: { className?: string }) {
+/**
+ * Official MICROPULSE mark. The source is transparent, so it sits directly on
+ * light and dark surfaces with no plate behind it.
+ *
+ * The lockup is near-square (1.41:1) and stacks the wordmark under the mark,
+ * so it needs more height than a horizontal logo for "SOLAR ENERGY" to stay
+ * legible — below ~44px it turns to mush.
+ */
+export function Logo({
+  className = "h-11 w-auto md:h-14",
+  priority = false,
+}: {
+  className?: string;
+  priority?: boolean;
+}) {
   return (
-    <span className={`inline-flex items-center gap-3 ${className}`}>
+    <>
       <Image
-        src="/micropulse-logo.jpeg"
-        alt="MICROPULSE Engineering logo"
-        width={160}
-        height={74}
-        priority
-        className="h-9 w-auto rounded-[3px] md:h-10"
+        src="/images/micropulse-logo.webp"
+        alt="MICROPULSE Engineering"
+        width={560}
+        height={396}
+        priority={priority}
+        sizes="120px"
+        className={className}
       />
       <span className="sr-only">MICROPULSE Engineering</span>
-    </span>
+    </>
   );
 }

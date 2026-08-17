@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/primitives";
 import { FAQS } from "@/lib/company";
 import { PlusIcon } from "@/components/ui/icons";
@@ -44,19 +43,17 @@ export function FAQ() {
                     <PlusIcon className="h-4 w-4" />
                   </span>
                 </button>
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                      className="overflow-hidden"
-                    >
-                      <p className="pb-6 pr-12 text-text-mid">{f.a}</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {/* Animating grid-template-rows 0fr -> 1fr gives a real
+                    height transition without measuring anything in JS. */}
+                <div
+                  className={`grid transition-[grid-template-rows,opacity] duration-350 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="pb-6 pr-12 text-text-mid">{f.a}</p>
+                  </div>
+                </div>
               </div>
             );
           })}

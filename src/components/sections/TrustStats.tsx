@@ -2,20 +2,17 @@
 
 import { useEffect, useRef, useState } from "react";
 import { STATS } from "@/lib/company";
+import { useMediaQuery, REDUCED_MOTION } from "@/lib/useMediaQuery";
 
 function Counter({ value, suffix }: { value: number; suffix: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const [n, setN] = useState(0);
   const done = useRef(false);
+  const reduce = useMediaQuery(REDUCED_MOTION);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) {
-      setN(value);
-      return;
-    }
+    if (!el || reduce) return;
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -37,11 +34,11 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
     );
     io.observe(el);
     return () => io.disconnect();
-  }, [value]);
+  }, [value, reduce]);
 
   return (
     <span ref={ref}>
-      {n}
+      {reduce ? value : n}
       {suffix}
     </span>
   );

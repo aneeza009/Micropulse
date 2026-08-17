@@ -205,6 +205,13 @@ body::after {
     background 0.35s var(--ease-out), border-color 0.35s var(--ease-out);
   cursor: pointer;
   white-space: nowrap;
+  min-height: 48px;
+}
+/* Full-width CTAs whose label is longer than a narrow phone can fit on one line. */
+.btn-wrap {
+  white-space: normal;
+  text-align: center;
+  text-wrap: balance;
 }
 .btn-primary {
   color: #1a0f02;
@@ -238,22 +245,109 @@ body::after {
   border-color: #fff;
 }
 
+/* --- Range slider ---
+   Native range inputs are ~16px tall, well under a usable touch target, and the
+   page's vertical scroll steals the drag on touch. Both are fixed here so the
+   estimator is operable on a phone. */
+.range-solar {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 44px;
+  background: transparent;
+  touch-action: none;
+  cursor: pointer;
+}
+.range-solar::-webkit-slider-runnable-track {
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--brand-gold) 0%,
+    var(--brand-orange) var(--range-fill, 50%),
+    var(--ink-700) var(--range-fill, 50%)
+  );
+}
+.range-solar::-moz-range-track {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--ink-700);
+}
+.range-solar::-moz-range-progress {
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--brand-gold), var(--brand-orange));
+}
+.range-solar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  margin-top: -10px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--brand-orange);
+  box-shadow: 0 4px 12px -2px rgba(241, 138, 35, 0.6);
+}
+.range-solar::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--brand-orange);
+  box-shadow: 0 4px 12px -2px rgba(241, 138, 35, 0.6);
+}
+.range-solar:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid var(--brand-purple);
+  outline-offset: 2px;
+}
+
 .focus-ring:focus-visible {
   outline: 2px solid var(--brand-purple);
   outline-offset: 3px;
   border-radius: 8px;
 }
 
-/* Reveal-on-scroll base */
+/* Reveal-on-scroll.
+   Visible by default so a slow or failed hydration can never blank the page;
+   the arming script in the layout opts in before first paint. */
 .reveal {
-  opacity: 0;
-  transform: translateY(26px);
-  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
-  will-change: opacity, transform;
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
 }
-.reveal.is-in {
+.js-reveal .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+}
+.js-reveal .reveal.is-in {
   opacity: 1;
   transform: none;
+}
+
+/* Hero entrance — runs once on load, no JS and no framer-motion in the bundle. */
+@keyframes rise-in {
+  from { opacity: 0; transform: translate3d(0, 16px, 0); }
+  to { opacity: 1; transform: none; }
+}
+.rise-in {
+  animation: rise-in 0.7s var(--ease-out) both;
+}
+
+@keyframes slide-in {
+  from { opacity: 0; transform: translate3d(-16px, 0, 0); }
+  to { opacity: 1; transform: none; }
+}
+.slide-in {
+  animation: slide-in 0.35s var(--ease-out) both;
+}
+
+@keyframes flow-dot {
+  0% { transform: translate3d(-50%, -8px, 0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translate3d(-50%, 24px, 0); opacity: 0; }
+}
+.flow-dot {
+  top: 0;
+  animation: flow-dot 1.6s var(--ease-in-out) infinite;
 }
 
 .scroll-dot {
@@ -276,19 +370,34 @@ body::after {
   100% { transform: translateY(200%); }
 }
 
+/* --- Brand marquee ---
+   The track holds the logo list twice, so translating by exactly -50% lands on
+   the duplicate in the same position the original started — no visible jump. */
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+.marquee-viewport {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 26s linear infinite;
+  will-change: transform;
+  animation: marquee var(--marquee-duration, 42s) linear infinite;
+}
+.marquee-viewport:hover .marquee-track,
+.marquee-viewport:focus-within .marquee-track {
+  animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .js-reveal .reveal { opacity: 1; transform: none; transition: none; }
+  /* Hold the marquee at its start rather than letting the blanket rule below
+     fast-forward it to the -50% end position. */
+  .marquee-track { animation: none !important; }
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;

@@ -3,15 +3,18 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
 import { NAV, COMPANY } from "@/lib/company";
 import { Logo } from "@/components/ui/Logo";
 import { PhoneIcon, WhatsAppIcon } from "@/components/ui/icons";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  // Remembering which route the menu was opened on closes it on navigation —
+  // including back/forward — without an effect that resets state.
+  const [openedOn, setOpenedOn] = useState<string | null>(null);
   const pathname = usePathname();
+  const open = openedOn === pathname;
+  const setOpen = (next: boolean) => setOpenedOn(next ? pathname : null);
   const isHome = pathname === "/";
 
   useEffect(() => {
@@ -20,10 +23,6 @@ export function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -47,10 +46,12 @@ export function Navbar() {
         }`}
       >
         <nav className="container-x flex h-[68px] items-center justify-between md:h-20">
-          <Link href="/" aria-label="MICROPULSE home" className="focus-ring">
-            <span className="inline-flex rounded-md bg-white px-2 py-1 shadow-sm">
-              <Logo />
-            </span>
+          <Link
+            href="/"
+            aria-label="MICROPULSE home"
+            className="focus-ring inline-flex shrink-0 items-center"
+          >
+            <Logo priority />
           </Link>
 
           {/* desktop links */}
@@ -61,7 +62,7 @@ export function Navbar() {
                 <li key={n.href}>
                   <Link
                     href={n.href}
-                    className={`rounded-full px-4 py-2 text-sm transition-colors focus-ring ${
+                    className={`rounded-full px-3 py-2 text-sm transition-colors focus-ring xl:px-4 ${
                       active
                         ? onDark
                           ? "text-white"
@@ -82,7 +83,7 @@ export function Navbar() {
           <div className="flex items-center gap-2">
             <a
               href={`tel:${COMPANY.phones[0].tel}`}
-              className={`hidden items-center gap-2 rounded-full border px-4 py-2 text-sm transition-colors sm:inline-flex focus-ring ${
+              className={`hidden items-center gap-2 rounded-full border px-4 py-2 text-sm transition-colors focus-ring sm:inline-flex lg:hidden xl:inline-flex ${
                 onDark
                   ? "border-white/30 text-white hover:border-white"
                   : "border-[var(--line-strong)] text-text-hi hover:border-purple"
@@ -101,9 +102,10 @@ export function Navbar() {
 
             {/* hamburger */}
             <button
-              onClick={() => setOpen((v) => !v)}
+              onClick={() => setOpen(!open)}
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
+              aria-controls="mobile-menu"
               className={`ml-1 grid h-11 w-11 place-items-center rounded-full border lg:hidden focus-ring ${
                 onDark
                   ? "border-white/30 text-white"
@@ -133,58 +135,49 @@ export function Navbar() {
       </header>
 
       {/* mobile menu */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[99] overflow-y-auto bg-white/97 backdrop-blur-xl lg:hidden"
-          >
-            <div className="container-x flex min-h-full flex-col gap-1 pb-10 pt-24">
-              {NAV.map((n, i) => {
-                const active = n.href === pathname;
-                return (
-                  <motion.div
-                    key={n.href}
-                    initial={{ opacity: 0, x: -16 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.04 + i * 0.04 }}
-                  >
-                    <Link
-                      href={n.href}
-                      className={`block border-b border-[var(--line)] py-3.5 font-display text-xl font-semibold ${
-                        active ? "text-purple" : "text-text-hi"
-                      }`}
-                    >
-                      {n.label}
-                    </Link>
-                  </motion.div>
-                );
-              })}
-              <div className="mt-7 flex flex-col gap-3">
-                <Link href="/contact" className="btn btn-primary">
-                  Book a Free Site Visit
-                </Link>
-                <div className="flex gap-3">
-                  <a href={`tel:${COMPANY.phones[0].tel}`} className="btn btn-ghost flex-1">
-                    <PhoneIcon className="h-4 w-4" /> Call
-                  </a>
-                  <a
-                    href={COMPANY.whatsapp.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-ghost flex-1"
-                  >
-                    <WhatsAppIcon className="h-4 w-4" /> WhatsApp
-                  </a>
-                </div>
-              </div>
+      <div
+        id="mobile-menu"
+        inert={!open}
+        className={`fixed inset-0 z-[99] overflow-y-auto overscroll-contain bg-white/97 backdrop-blur-xl transition-opacity duration-300 lg:hidden ${
+          open ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      >
+        <div className="container-x flex min-h-full flex-col gap-1 pb-10 pt-24">
+          {NAV.map((n, i) => {
+            const active = n.href === pathname;
+            return (
+              <Link
+                key={n.href}
+                href={n.href}
+                style={{ animationDelay: `${0.04 + i * 0.04}s` }}
+                className={`${open ? "slide-in" : ""} block border-b border-[var(--line)] py-3.5 font-display text-xl font-semibold ${
+                  active ? "text-purple" : "text-text-hi"
+                }`}
+              >
+                {n.label}
+              </Link>
+            );
+          })}
+          <div className="mt-7 flex flex-col gap-3">
+            <Link href="/contact" className="btn btn-primary">
+              Book a Free Site Visit
+            </Link>
+            <div className="flex gap-3">
+              <a href={`tel:${COMPANY.phones[0].tel}`} className="btn btn-ghost flex-1">
+                <PhoneIcon className="h-4 w-4" /> Call
+              </a>
+              <a
+                href={COMPANY.whatsapp.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-ghost flex-1"
+              >
+                <WhatsAppIcon className="h-4 w-4" /> WhatsApp
+              </a>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

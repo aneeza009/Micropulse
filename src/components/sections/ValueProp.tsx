@@ -1,7 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { SectionHeading } from "@/components/ui/primitives";
+import { SectionHeading, Reveal } from "@/components/ui/primitives";
 import { VALUE_PROPS } from "@/lib/company";
 import { TagIcon, ShieldIcon, SavingsIcon, LeafIcon } from "@/components/ui/icons";
 
@@ -26,12 +23,9 @@ export function ValueProp() {
           {VALUE_PROPS.map((v, i) => {
             const Icon = ICONS[i % ICONS.length];
             return (
-              <motion.div
+              <Reveal
                 key={v.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.55, delay: (i % 4) * 0.07 }}
+                delay={(i % 4) * 0.07}
                 className="relative overflow-hidden rounded-[var(--radius-lg)] border border-[var(--line)] bg-gradient-to-b from-[var(--surface-2)] to-transparent p-6"
               >
                 <span className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-gold to-orange text-[#1a0f02]">
@@ -41,7 +35,7 @@ export function ValueProp() {
                   {v.title}
                 </h3>
                 <p className="mt-2 text-sm text-text-mid">{v.desc}</p>
-              </motion.div>
+              </Reveal>
             );
           })}
         </div>

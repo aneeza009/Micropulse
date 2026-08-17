@@ -53,6 +53,8 @@ export const NAV = [
   { label: "About", href: "/about" },
   { label: "Solutions", href: "/solutions" },
   { label: "Services", href: "/services" },
+  { label: "Projects", href: "/projects" },
+  { label: "Team", href: "/team" },
   { label: "Process", href: "/process" },
   { label: "Why Us", href: "/why-us" },
   { label: "Contact", href: "/contact" },

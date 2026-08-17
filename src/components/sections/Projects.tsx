@@ -1,35 +1,16 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { SectionHeading } from "@/components/ui/primitives";
-import { SunIcon } from "@/components/ui/icons";
+import Link from "next/link";
+import { SectionHeading, Reveal } from "@/components/ui/primitives";
+import { ArrowIcon } from "@/components/ui/icons";
+import { PROJECTS } from "@/lib/projects";
 
 /**
- * Portfolio gallery. Images are representative of MICROPULSE's solar work
- * by category. No client names, locations or capacity figures are shown —
- * those fields are ready to be populated when the client supplies verified
- * project data (swap `PROJECTS` for a real data array).
+ * Featured-work teaser. The filterable portfolio with detail views lives on
+ * /projects — this only surfaces a few entries and sends people there.
  */
-const FILTERS = ["All", "Residential", "Commercial", "Industrial"] as const;
-type Filter = (typeof FILTERS)[number];
-
-const PROJECTS = [
-  { img: "/images/proj1.jpg", category: "Residential" },
-  { img: "/images/proj2.jpg", category: "Commercial" },
-  { img: "/images/proj3.jpg", category: "Industrial" },
-  { img: "/images/proj4.jpg", category: "Commercial" },
-  { img: "/images/proj5.jpg", category: "Residential" },
-  { img: "/images/proj6.jpg", category: "Industrial" },
-] as const;
+const FEATURED = PROJECTS.filter((p) => p.featured).slice(0, 3);
 
 export function Projects() {
-  const [filter, setFilter] = useState<Filter>("All");
-  const shown = PROJECTS.filter(
-    (p) => filter === "All" || p.category === filter
-  );
-
   return (
     <section id="projects" className="relative scroll-mt-24 py-20 md:py-28">
       <div className="container-x">
@@ -42,65 +23,53 @@ export function Projects() {
                 <span className="text-gradient-solar">Pakistan.</span>
               </>
             }
-            intro="A selection of MicroPulse solar installations across residential, commercial and industrial sites."
+            intro="Solar installations delivered for hospitals, petrol stations, campuses, industrial plants and commercial sites."
           />
-          <div className="flex flex-wrap gap-2">
-            {FILTERS.map((f) => (
-              <button
-                key={f}
-                onClick={() => setFilter(f)}
-                className={`rounded-full border px-4 py-2 text-sm font-medium transition-all focus-ring ${
-                  filter === f
-                    ? "border-transparent bg-gradient-to-r from-gold to-orange text-[#1a0f02]"
-                    : "border-[var(--line-strong)] text-text-mid hover:text-text-hi"
-                }`}
-              >
-                {f}
-              </button>
-            ))}
-          </div>
+          <Reveal className="shrink-0">
+            <Link href="/projects" className="btn btn-ghost focus-ring">
+              View all projects <ArrowIcon className="h-4 w-4" />
+            </Link>
+          </Reveal>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {shown.map((p) => (
-            <motion.div
-              key={p.img}
-              layout
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5 }}
-              className="group relative aspect-[4/3] overflow-hidden rounded-[var(--radius-lg)] border border-[var(--line)]"
-            >
-              <Image
-                src={p.img}
-                alt={`${p.category} solar installation by MICROPULSE`}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div
-                aria-hidden
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(180deg, rgba(20,12,28,0.05) 40%, rgba(20,12,28,0.82) 100%)",
-                }}
-              />
-              <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 p-5">
-                <div className="flex items-center gap-2">
-                  <span className="grid h-8 w-8 place-items-center rounded-lg bg-white/15 text-gold backdrop-blur">
-                    <SunIcon className="h-4 w-4" />
-                  </span>
-                  <span className="font-display text-sm font-semibold text-white">
-                    {p.category} Solar
+        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {FEATURED.map((p, i) => (
+            <Reveal key={p.id} delay={(i % 3) * 0.08} className="h-full">
+              <Link
+                href="/projects"
+                className="group relative flex h-full flex-col overflow-hidden rounded-[var(--radius-lg)] border border-[var(--line)] bg-white shadow-[var(--shadow-card)] transition-transform duration-500 hover:-translate-y-1 focus-ring"
+              >
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <Image
+                    src={p.images[0]}
+                    alt={p.title}
+                    fill
+                    loading="lazy"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div
+                    aria-hidden
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(180deg, rgba(20,12,28,0) 45%, rgba(20,12,28,0.75) 100%)",
+                    }}
+                  />
+                  <span className="absolute left-4 top-4 rounded-full bg-white/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-white backdrop-blur">
+                    {p.category}
                   </span>
                 </div>
-                <span className="text-[10px] font-semibold uppercase tracking-widest text-white/70">
-                  MICROPULSE
-                </span>
-              </div>
-            </motion.div>
+                <div className="p-5">
+                  <h3 className="font-display text-lg font-bold text-text-hi">
+                    {p.title}
+                  </h3>
+                  <span className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-purple transition-colors group-hover:text-orange">
+                    View project <ArrowIcon className="h-4 w-4" />
+                  </span>
+                </div>
+              </Link>
+            </Reveal>
           ))}
         </div>
       </div>

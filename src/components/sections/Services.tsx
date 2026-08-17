@@ -1,8 +1,5 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { SectionHeading } from "@/components/ui/primitives";
+import { SectionHeading, Reveal } from "@/components/ui/primitives";
 import { SERVICES } from "@/lib/company";
 import {
   HomeIcon,
@@ -28,7 +25,7 @@ const IMAGES: Record<string, string> = {
   installation: "/images/installation.jpg",
   maintenance: "/images/maintenance.jpg",
   wholesale: "/images/wholesale.jpg",
-  delivery: "/images/hero-poster.jpg",
+  delivery: "/images/hero-poster.webp",
 };
 
 export function Services() {
@@ -53,12 +50,10 @@ export function Services() {
           {SERVICES.map((s, i) => {
             const Icon = ICONS[s.id];
             return (
-              <motion.article
+              <Reveal
                 key={s.id}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, delay: (i % 3) * 0.08 }}
+                as="article"
+                delay={(i % 3) * 0.08}
                 className="group overflow-hidden rounded-[var(--radius-lg)] border border-[var(--line)] bg-white shadow-[var(--shadow-card)] transition-transform duration-500 hover:-translate-y-1"
               >
                 <div className="relative aspect-[16/10] overflow-hidden">
@@ -93,7 +88,7 @@ export function Services() {
                     {s.desc}
                   </p>
                 </div>
-              </motion.article>
+              </Reveal>
             );
           })}
         </div>

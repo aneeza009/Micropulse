@@ -1,7 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { SectionHeading } from "@/components/ui/primitives";
+import { SectionHeading, Reveal } from "@/components/ui/primitives";
 import { WHY_US } from "@/lib/company";
 import {
   ShieldIcon,
@@ -34,12 +31,9 @@ export function WhyChooseUs() {
             {WHY_US.map((claim, i) => {
               const Icon = ICONS[i % ICONS.length];
               return (
-                <motion.div
+                <Reveal
                   key={claim}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.55, delay: (i % 2) * 0.08 }}
+                  delay={(i % 2) * 0.08}
                   className="group flex items-start gap-4 rounded-2xl border border-[var(--line)] bg-[var(--surface-2)] p-5 transition-colors hover:border-orange/40"
                 >
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-gold/20 to-orange/10 text-orange">
@@ -48,7 +42,7 @@ export function WhyChooseUs() {
                   <p className="pt-1.5 font-display font-semibold leading-snug text-text-hi">
                     {claim}
                   </p>
-                </motion.div>
+                </Reveal>
               );
             })}
           </div>

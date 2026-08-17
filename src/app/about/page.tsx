@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { About } from "@/components/sections/About";
+import { BrandMarquee } from "@/components/sections/BrandMarquee";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { ValueProp } from "@/components/sections/ValueProp";
 import { CTABand } from "@/components/ui/CTABand";
@@ -26,6 +27,7 @@ export default function AboutPage() {
         intro="An engineering company delivering complete, high-quality solar solutions across Pakistan."
       />
       <About />
+      <BrandMarquee />
       <WhyChooseUs />
       <ValueProp />
       <CTABand />

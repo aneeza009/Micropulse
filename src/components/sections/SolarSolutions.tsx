@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/primitives";
 import { SOLUTIONS } from "@/lib/company";
 import {
@@ -57,15 +56,11 @@ export function SolarSolutions() {
           ))}
         </div>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={sol.id}
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.4 }}
-            className="card mt-6 grid grid-cols-1 gap-8 p-7 md:grid-cols-2 md:p-10 lg:gap-12"
-          >
+        {/* Keyed so switching system type remounts and replays the entrance. */}
+        <div
+          key={sol.id}
+          className="rise-in card mt-6 grid grid-cols-1 gap-8 p-5 sm:p-7 md:grid-cols-2 md:p-10 lg:gap-12"
+        >
             {/* copy */}
             <div className="flex flex-col justify-center">
               <span className="font-display text-xs font-bold uppercase tracking-[0.25em] text-orange">
@@ -87,11 +82,9 @@ export function SolarSolutions() {
                   const Icon = NODE_ICON[node] ?? HomeIcon;
                   return (
                     <div key={node} className="flex flex-col items-center gap-4">
-                      <motion.div
-                        initial={{ opacity: 0, x: -14 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.1 + i * 0.12 }}
-                        className="flex w-full items-center gap-4 rounded-xl border border-[var(--line)] bg-[var(--surface-2)] px-4 py-3"
+                      <div
+                        style={{ animationDelay: `${0.1 + i * 0.12}s` }}
+                        className="slide-in flex w-full items-center gap-4 rounded-xl border border-[var(--line)] bg-[var(--surface-2)] px-4 py-3"
                       >
                         <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-purple/40 to-purple/10 text-orange">
                           <Icon className="h-5 w-5" />
@@ -102,17 +95,13 @@ export function SolarSolutions() {
                         <span className="ml-auto text-xs uppercase tracking-widest text-text-lo">
                           0{i + 1}
                         </span>
-                      </motion.div>
+                      </div>
                       {i < sol.nodes.length - 1 && (
-                        <div className="relative h-6 w-[2px] bg-[var(--line-strong)]">
-                          <motion.div
-                            className="absolute left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-orange"
-                            animate={{ y: [0, 24, 0], opacity: [0, 1, 0] }}
-                            transition={{
-                              duration: 1.6,
-                              repeat: Infinity,
-                              delay: i * 0.2,
-                            }}
+                        <div className="relative h-6 w-[2px] overflow-hidden bg-[var(--line-strong)]">
+                          {/* compositor-only transform, no JS loop */}
+                          <span
+                            className="flow-dot absolute left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-orange"
+                            style={{ animationDelay: `${i * 0.2}s` }}
                           />
                         </div>
                       )}
@@ -121,8 +110,7 @@ export function SolarSolutions() {
                 })}
               </div>
             </div>
-          </motion.div>
-        </AnimatePresence>
+        </div>
       </div>
     </section>
   );

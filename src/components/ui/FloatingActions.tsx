@@ -37,7 +37,6 @@ export function FloatingActions() {
         aria-label="Message MICROPULSE on WhatsApp"
         className="group relative grid h-12 w-12 place-items-center"
       >
-        <span className="absolute inset-0 animate-ping rounded-full bg-gold/30" style={{ animationDuration: "2.5s" }} />
         <span className="relative grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-gold to-orange text-[#122] shadow-[0_10px_26px_-8px_rgba(241,138,35,0.7)] transition-transform group-hover:scale-105">
           <WhatsAppIcon className="h-6 w-6 text-[#1a0f02]" />
         </span>

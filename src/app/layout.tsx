@@ -71,7 +71,7 @@ const jsonLd = {
   name: COMPANY.legalName,
   alternateName: COMPANY.brand,
   url: SITE_URL,
-  image: `${SITE_URL}/micropulse-logo.jpeg`,
+  image: `${SITE_URL}/images/micropulse-logo.webp`,
   description:
     "Professional solar engineering company providing complete solar solutions, installation, maintenance and related services in Pakistan.",
   telephone: COMPANY.phones.map((p) => p.tel),
@@ -96,7 +96,14 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${sora.variable} ${inter.variable}`}>
+    <html lang="en" className={`${sora.variable} ${inter.variable} js-reveal`}>
+      <head>
+        {/* Scroll reveals hide their content until observed, so without
+            scripting they must be shown unconditionally. */}
+        <noscript>
+          <style>{`.js-reveal .reveal{opacity:1;transform:none}`}</style>
+        </noscript>
+      </head>
       <body>
         <a
           href="#main"

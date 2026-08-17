@@ -20,9 +20,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-10 border-t border-[var(--line)] py-12 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1.2fr)]">
           {/* brand */}
           <div>
-            <span className="inline-flex rounded-md bg-white px-2.5 py-1.5">
-              <Logo />
-            </span>
+            <Logo className="h-16 w-auto" />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-text-mid">
               {COMPANY.legalName}. Smart solar solutions for a better future —
               engineered, installed and supported across Pakistan.

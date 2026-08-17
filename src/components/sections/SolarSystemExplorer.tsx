@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import { SectionHeading, Reveal } from "@/components/ui/primitives";
 import {
   SunIcon,
@@ -70,15 +69,15 @@ export function SolarSystemExplorer() {
 
         {/* Flow rail */}
         <Reveal delay={0.1}>
-          <div className="mt-14 overflow-x-auto pb-2">
-            <div className="relative flex min-w-[720px] items-stretch justify-between gap-2 md:min-w-0">
-              {/* connecting line */}
-              <div className="absolute left-6 right-6 top-[42px] -z-0 h-[2px] bg-[var(--line-strong)]">
-                <motion.div
-                  className="h-full bg-gradient-to-r from-gold to-orange"
-                  initial={{ width: "0%" }}
-                  animate={{ width: `${(active / (STEPS.length - 1)) * 100}%` }}
-                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          {/* Three-up on phones, one row from md — the stages stay tappable
+              without a horizontal scroller inside the page. */}
+          <div className="mt-14">
+            <div className="relative grid grid-cols-3 gap-y-6 sm:grid-cols-6 sm:gap-2">
+              {/* connecting line, drawn only once the stages sit on one row */}
+              <div className="absolute left-6 right-6 top-[42px] -z-0 hidden h-[2px] bg-[var(--line-strong)] sm:block">
+                <div
+                  className="h-full bg-gradient-to-r from-gold to-orange transition-[width] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                  style={{ width: `${(active / (STEPS.length - 1)) * 100}%` }}
                 />
               </div>
 
@@ -89,7 +88,7 @@ export function SolarSystemExplorer() {
                     key={s.id}
                     onClick={() => setActive(i)}
                     aria-pressed={i === active}
-                    className="group relative z-[1] flex flex-1 flex-col items-center gap-3 focus-ring"
+                    className="group relative z-[1] flex flex-col items-center gap-3 focus-ring"
                   >
                     <span
                       className={`grid h-[52px] w-[52px] place-items-center rounded-2xl border transition-all duration-400 md:h-[68px] md:w-[68px] ${
@@ -118,15 +117,10 @@ export function SolarSystemExplorer() {
 
         {/* Explanation */}
         <div className="mt-10 min-h-[120px] md:mt-12">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current.id}
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.35 }}
-              className="card mx-auto max-w-3xl p-7 md:p-9"
-            >
+          <div
+            key={current.id}
+            className="rise-in card mx-auto max-w-3xl p-5 sm:p-7 md:p-9"
+          >
               <div className="flex items-start gap-4">
                 <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-gold to-orange text-[#1a0f02]">
                   <current.Icon className="h-6 w-6" />
@@ -138,8 +132,7 @@ export function SolarSystemExplorer() {
                   <p className="mt-2 text-text-mid">{current.text}</p>
                 </div>
               </div>
-            </motion.div>
-          </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>

@@ -35,14 +35,47 @@ npm run build    # production build
 
 ## Content notes
 
-All company facts (experience, capacity, contacts, offices, services, process,
-FAQs) live in [`src/lib/company.ts`](src/lib/company.ts) as a single source of
-truth. Project data fields are ready to be populated with verified client
-information. No certifications, warranties, brands, testimonials, or financing
-claims are included until supplied by the client.
+Content is separated from the UI. Each of these files is the single source of
+truth for its section, and can be edited without touching any component:
+
+| File | Contains |
+| --- | --- |
+| [`src/lib/company.ts`](src/lib/company.ts) | Verified company facts — experience, capacity, contacts, offices, services, process, FAQs, navigation |
+| [`src/lib/team.ts`](src/lib/team.ts) | Team directory rendered by `/team` |
+| [`src/lib/projects.ts`](src/lib/projects.ts) | Project portfolio rendered by `/projects` |
+| [`src/lib/brands.ts`](src/lib/brands.ts) | Equipment brands in the About page marquee |
+
+No certifications, warranties, testimonials or financing claims are included
+until supplied by the client.
+
+### ⚠ Placeholder content to replace before launch
+
+Entries marked `placeholder: true` are filler that exists only so the pages are
+not empty. They are **not** verified MICROPULSE information.
+
+- **`src/lib/team.ts`** — Muhammad Bilal Zahid's profile is client-supplied and
+  final. Muhammad Tayyab Zaid's job title is confirmed but his bio is generic
+  placeholder copy. The other six members are invented names and roles.
+- **`src/lib/projects.ts`** — every project is placeholder. No capacity, date,
+  location, client name, saving or specification has been supplied, so those
+  fields are deliberately left empty; the detail view renders a field only when
+  it has a value, so fill in what you can verify and leave the rest out.
 
 ## Assets to replace with client-supplied media
 
-- `public/media/hero-solar.mp4` — hero background video (placeholder stock)
+- `public/media/hero-solar.mp4` — hero background video (placeholder stock).
+  Loaded only at ≥768px and never on reduced-motion or data-saver clients.
 - `public/images/*.jpg` — service & project photos (placeholder stock)
-- `public/micropulse-logo.jpeg` — official logo (in use)
+- `public/images/team/` — team portraits (none supplied; cards fall back to an
+  initials monogram until a `photo` path is set)
+
+### Derived image assets
+
+These are generated from client-supplied originals, which are kept alongside:
+
+- `public/images/micropulse-logo.webp` — trimmed and resized from
+  `public/images/micropulse new  logo.png` (already transparent)
+- `public/images/brands/clean/*.webp` — the logos in `public/images/brands/`
+  with their white (or baked-in checkerboard) backgrounds keyed out and padding
+  trimmed. Colours and aspect ratios are unchanged.
+- `public/images/hero-poster.webp` — from `hero-poster.jpg`

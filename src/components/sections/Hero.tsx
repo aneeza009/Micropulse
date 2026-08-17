@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import Image from "next/image";
+import { useMediaQuery, REDUCED_MOTION } from "@/lib/useMediaQuery";
 import { COMPANY } from "@/lib/company";
 import { PhoneIcon, WhatsAppIcon, ArrowIcon } from "@/components/ui/icons";
 
@@ -11,41 +11,43 @@ const miniStats = [
   { v: "100%", l: "Safety Compliance" },
 ];
 
-const ease = [0.22, 1, 0.36, 1] as const;
-
 export function Hero() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) {
-      v.pause();
-    } else {
-      v.play().catch(() => {});
-    }
-  }, []);
+  // The background clip is 6 MB. Decide on the client whether this device
+  // should pay for it at all — phones, reduced-motion and data-saver users get
+  // the poster image alone, which is the whole background cost on mobile.
+  const reduceMotion = useMediaQuery(REDUCED_MOTION);
+  const wideEnough = useMediaQuery("(min-width: 768px)");
+  const reduceData = useMediaQuery("(prefers-reduced-data: reduce)");
+  const wantsVideo = wideEnough && !reduceMotion && !reduceData;
 
   return (
     <section
       id="home"
       className="on-dark relative min-h-[100svh] w-full overflow-hidden bg-[#140d1f]"
     >
-      {/* Video background */}
-      <video
-        ref={videoRef}
-        className="absolute inset-0 h-full w-full object-cover"
-        poster="/images/hero-poster.jpg"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
+      {/* Background: poster always, video only where it is worth the bytes */}
+      <Image
+        src="/images/hero-poster.webp"
+        alt=""
         aria-hidden
-      >
-        <source src="/media/hero-solar.mp4" type="video/mp4" />
-      </video>
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
+      />
+      {wantsVideo && (
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="none"
+          aria-hidden
+        >
+          <source src="/media/hero-solar.mp4" type="video/mp4" />
+        </video>
+      )}
 
       {/* Legibility overlays (brand-tinted, strong enough for white text) */}
       <div
@@ -67,12 +69,7 @@ export function Hero() {
 
       {/* Content */}
       <div className="container-x relative z-[3] flex min-h-[100svh] flex-col justify-center pt-28 pb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease }}
-          className="max-w-2xl"
-        >
+        <div className="rise-in max-w-2xl">
           <span className="eyebrow mb-6">Solar Engineering · Pakistan</span>
 
           <h1 className="mt-5 text-[12vw] leading-[0.95] text-white [text-shadow:0_2px_24px_rgba(0,0,0,0.55)] sm:text-6xl md:text-7xl lg:text-[5.4rem]">
@@ -116,14 +113,12 @@ export function Hero() {
               WhatsApp
             </a>
           </div>
-        </motion.div>
+        </div>
 
         {/* mini stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.25, ease }}
-          className="mt-14 flex flex-wrap gap-x-10 gap-y-5 border-t border-white/15 pt-6"
+        <div
+          className="rise-in mt-14 flex flex-wrap gap-x-10 gap-y-5 border-t border-white/15 pt-6"
+          style={{ animationDelay: "0.25s" }}
         >
           {miniStats.map((s) => (
             <div key={s.l}>
@@ -135,7 +130,7 @@ export function Hero() {
               </div>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
 
       {/* scroll cue */}

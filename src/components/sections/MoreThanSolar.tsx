@@ -1,7 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { SectionHeading } from "@/components/ui/primitives";
+import { SectionHeading, Reveal } from "@/components/ui/primitives";
 import { MORE_THAN_SOLAR } from "@/lib/company";
 import { CameraIcon, FenceIcon, CpuIcon } from "@/components/ui/icons";
 
@@ -36,12 +33,9 @@ export function MoreThanSolar() {
           {MORE_THAN_SOLAR.map((m, i) => {
             const Icon = ICONS[i];
             return (
-              <motion.div
+              <Reveal
                 key={m.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
+                delay={i * 0.1}
                 className="group relative overflow-hidden rounded-[var(--radius-lg)] border border-purple/25 bg-gradient-to-b from-purple/[0.12] to-transparent p-8 text-center"
               >
                 <span className="mx-auto grid h-16 w-16 place-items-center rounded-2xl border border-purple-lt/40 bg-purple/20 text-orange transition-transform duration-500 group-hover:scale-110">
@@ -54,7 +48,7 @@ export function MoreThanSolar() {
                   {m.tag}
                 </span>
                 <p className="mt-3 text-sm text-text-mid">{m.desc}</p>
-              </motion.div>
+              </Reveal>
             );
           })}
         </div>
