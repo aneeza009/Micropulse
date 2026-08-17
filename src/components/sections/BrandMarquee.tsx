@@ -25,7 +25,17 @@ export function BrandMarquee() {
               src={b.logo}
               alt={b.name}
               fill
-              loading="lazy"
+              // NOT lazy. Native lazy loading fetches based on where the
+              // element sits relative to the viewport, but this track is
+              // ~2300px wide and translating continuously under overflow
+              // hidden, so most logos only start downloading as they scroll
+              // in — and often arrive after they have already passed, which
+              // reads as logos that flicker in and out and "appear on hover"
+              // (hover pauses the track, letting the fetch land). The whole
+              // set is ~40KB of WebP, so it is fetched up front at low
+              // priority instead, where it cannot compete with the LCP image.
+              loading="eager"
+              fetchPriority="low"
               sizes="150px"
               className="object-contain opacity-70 transition-opacity duration-300 hover:opacity-100"
               style={

@@ -6,9 +6,13 @@ import { Footer } from "@/components/sections/Footer";
 import { FloatingActions } from "@/components/ui/FloatingActions";
 import "./globals.css";
 
+// Sora is the display face only — headings, eyebrows, buttons, stat figures —
+// and every usage is 600/700/800. Declaring just those is accurate rather than
+// a saving: Google serves Sora as a variable font, so the file is byte-identical
+// whichever weights are listed. Kept narrow so it stays honest if that changes.
 const sora = Sora({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["600", "700", "800"],
   variable: "--font-sora",
   display: "swap",
 });

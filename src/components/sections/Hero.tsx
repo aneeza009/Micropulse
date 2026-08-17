@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useMediaQuery, REDUCED_MOTION } from "@/lib/useMediaQuery";
 import { COMPANY } from "@/lib/company";
@@ -12,13 +13,32 @@ const miniStats = [
 ];
 
 export function Hero() {
-  // The background clip is 6 MB. Decide on the client whether this device
-  // should pay for it at all — phones, reduced-motion and data-saver users get
-  // the poster image alone, which is the whole background cost on mobile.
+  // Who gets the background clip at all: phones, reduced-motion and data-saver
+  // users get the poster image alone, which is the entire background cost on
+  // mobile.
   const reduceMotion = useMediaQuery(REDUCED_MOTION);
   const wideEnough = useMediaQuery("(min-width: 768px)");
   const reduceData = useMediaQuery("(prefers-reduced-data: reduce)");
-  const wantsVideo = wideEnough && !reduceMotion && !reduceData;
+  const eligible = wideEnough && !reduceMotion && !reduceData;
+
+  // ...and when. The poster is the LCP element, so the clip is held back until
+  // the browser is idle rather than competing with first paint and hydration.
+  const [idle, setIdle] = useState(false);
+  useEffect(() => {
+    if (!eligible) return;
+    const w = window as Window & {
+      requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number;
+      cancelIdleCallback?: (h: number) => void;
+    };
+    if (w.requestIdleCallback) {
+      const h = w.requestIdleCallback(() => setIdle(true), { timeout: 2500 });
+      return () => w.cancelIdleCallback?.(h);
+    }
+    const t = window.setTimeout(() => setIdle(true), 1200);
+    return () => window.clearTimeout(t);
+  }, [eligible]);
+
+  const wantsVideo = eligible && idle;
 
   return (
     <section
@@ -37,7 +57,7 @@ export function Hero() {
       />
       {wantsVideo && (
         <video
-          className="absolute inset-0 h-full w-full object-cover"
+          className="fade-in absolute inset-0 h-full w-full object-cover"
           autoPlay
           muted
           loop
