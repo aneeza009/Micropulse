@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Contact } from "@/components/sections/Contact";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Contact",
   description:
     "Contact MICROPULSE Engineering — book a free site visit or free consultation. Offices in Lahore and Bahawalpur. Call or WhatsApp our team.",
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

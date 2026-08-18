@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { TeamGrid } from "@/components/sections/TeamGrid";
 import { CTABand } from "@/components/ui/CTABand";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Team",
   description:
     "Meet the people behind MICROPULSE Engineering — the leadership and the engineering and operations team delivering solar and electrical projects across Pakistan.",
-};
+  path: "/team",
+});
 
 export default function TeamPage() {
   return (

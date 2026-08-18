@@ -48,27 +48,43 @@ truth for its section, and can be edited without touching any component:
 No certifications, warranties, testimonials or financing claims are included
 until supplied by the client.
 
-### ⚠ Placeholder content to replace before launch
+### ⚠ What is verified, and what still needs the client
 
-Entries marked `placeholder: true` are filler that exists only so the pages are
-not empty. They are **not** verified MICROPULSE information.
-
+- **`src/lib/company.ts`** — verified. Both phone numbers, both office
+  addresses, services, process and FAQs are client-supplied.
 - **`src/lib/team.ts`** — Muhammad Bilal Zahid's profile is client-supplied and
-  final. Muhammad Tayyab Zaid's job title is confirmed but his bio is generic
-  placeholder copy. The other six members are invented names and roles.
-- **`src/lib/projects.ts`** — every project is placeholder. No capacity, date,
-  location, client name, saving or specification has been supplied, so those
-  fields are deliberately left empty; the detail view renders a field only when
-  it has a value, so fill in what you can verify and leave the rest out.
+  final; Muhammad Tayyab Zaid's **title** is confirmed but his bio is written
+  from that title alone. The six `TEAM` entries carry a name, a role and a
+  description of that role only — no qualifications, tenure, employers or
+  project claims, since none were supplied. **Confirm each is a real colleague
+  who has agreed to appear before launch.**
+- **`src/lib/projects.ts`** — the facility types are the client's own
+  (hospitals, PSO, PESI, Punjab College, industrial, commercial, residential).
+  Everything unverified is **absent rather than estimated**: no capacity, cost,
+  panel count, date, savings figure or specification appears anywhere, and
+  `verified: false` marks each row until the real records arrive. The detail
+  view renders a field only when it has a value, so fill in what you can
+  confirm and leave the rest out.
+- **Project photography** is matched to each project's facility *type*, not
+  shot on that site. `ProjectsExplorer` states this once beneath the grid;
+  delete that line when real site photography replaces the current images.
 
 ## Assets to replace with client-supplied media
 
 - `public/media/hero-solar.mp4` — hero background video (placeholder stock).
   Loaded only at ≥768px, never on reduced-motion or data-saver clients, and only
   once the browser goes idle so it cannot compete with first paint.
-- `public/images/*.jpg` — service & project photos (placeholder stock)
+- `public/images/*.jpg` — service photos (stock)
+- `public/images/projects/*.jpg` — client-supplied site photography
 - `public/images/team/` — team portraits (none supplied; cards fall back to an
   initials monogram until a `photo` path is set)
+
+Two supplied files are parked in `assets-source/` rather than served:
+
+| Parked file | Why |
+| --- | --- |
+| `assets-source/unused/wholesale-competitor-branding.jpg` | The worker is wearing another solar company's branded uniform ("ELITE POWER GROUP"). It cannot appear on MICROPULSE's site. |
+| `assets-source/projects/solar-water-pump-unplaced.jpg` | Shows an agricultural solar tubewell. Nothing in the supplied brief says MICROPULSE does agricultural pumping, so attaching it to a project would assert a capability that has not been confirmed. |
 
 ### Derived assets and their sources
 
@@ -79,8 +95,10 @@ the site actually uses are committed under `public/`:
 | Served | Generated from |
 | --- | --- |
 | `public/images/micropulse-logo.webp` (67 KB) | `assets-source/micropulse-logo-original.png` (1.4 MB) — trimmed and resized; the source was already transparent |
+| `public/images/micropulse-logo-light.webp` (62 KB) | Same source. Dark-background variant: only the purple "Micro" and the grey "SOLAR ENERGY" are recoloured white — the sun, the panel and the orange "Pulse" are untouched. Needed because those two elements measure 3.5:1 and 2.7:1 against the hero, under the 4.5:1 minimum; the variant measures 19:1. Used by the navbar over the home hero only. |
 | `public/images/brands/clean/*.webp` | `assets-source/brands/*` — white and baked-in checkerboard backgrounds keyed out, padding trimmed. Colours and aspect ratios unchanged. |
 | `public/images/hero-poster.webp` (78 KB) | `assets-source/hero-poster-original.jpg` (165 KB) |
+| `src/app/favicon.ico` · `icon.png` · `apple-icon.png` | `assets-source/favicon-master.png` — the logo emblem (sun + panel, cropped to its dense core so it survives 16px) on the brand ink tile. These replaced the untouched Create-Next-App favicon, which was still shipping the Next.js triangle in the browser tab. |
 | `public/media/hero-solar.mp4` (1.6 MB) | `assets-source/hero-solar-original-1080p.mp4` (6.1 MB) |
 
 To re-encode the hero video after replacing it (drops the audio track, which a

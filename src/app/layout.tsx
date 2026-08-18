@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Sora, Inter } from "next/font/google";
 import { COMPANY } from "@/lib/company";
+import { SITE_URL } from "@/lib/seo";
 import { Navbar } from "@/components/sections/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import { FloatingActions } from "@/components/ui/FloatingActions";
@@ -23,8 +24,6 @@ const inter = Inter({
   display: "swap",
 });
 
-const SITE_URL = "https://micropulse.com.pk";
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -44,7 +43,9 @@ export const metadata: Metadata = {
     "MICROPULSE Engineering",
   ],
   authors: [{ name: COMPANY.legalName }],
-  alternates: { canonical: SITE_URL },
+  // Homepage only. Every other route sets its own via `pageMeta`, because a
+  // canonical inherited from here would point them all at "/".
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "en_PK",

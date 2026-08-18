@@ -16,7 +16,7 @@ export const COMPANY = {
   afterSalesMonths: 6,
   phones: [
     { label: "+92 335 0815954", tel: "+923350815954" },
-    { label: "+92 308 6012480", tel: "+923086012480" },
+    { label: "+92 324 5351808", tel: "+923245351808" },
   ],
   whatsapp: {
     number: "923350815954",

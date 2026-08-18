@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { SolarSolutions } from "@/components/sections/SolarSolutions";
 import { SolarSystemExplorer } from "@/components/sections/SolarSystemExplorer";
 import { WholesaleSupply } from "@/components/sections/WholesaleSupply";
 import { CTABand } from "@/components/ui/CTABand";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Solutions",
   description:
     "Hybrid, on-grid and off-grid solar systems engineered by MICROPULSE — backup power, bill savings and full energy independence, plus nationwide wholesale supply.",
-};
+  path: "/solutions",
+});
 
 export default function SolutionsPage() {
   return (

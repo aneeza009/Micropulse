@@ -19,9 +19,12 @@ const ProjectDialog = dynamic(() => import("./ProjectDialog"), { ssr: false });
 function ProjectCard({
   project,
   onOpen,
+  eager,
 }: {
   project: Project;
   onOpen: () => void;
+  /** First row only — see the call site. */
+  eager?: boolean;
 }) {
   return (
     <button
@@ -33,7 +36,7 @@ function ProjectCard({
           src={project.images[0]}
           alt={project.title}
           fill
-          loading="lazy"
+          loading={eager ? "eager" : "lazy"}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
@@ -98,6 +101,10 @@ export function ProjectsExplorer() {
   return (
     <section className="relative scroll-mt-24 py-16 md:py-24">
       <div className="container-x">
+        {/* The grid's own heading. The page title above it already says this
+            visibly, so repeating it on screen would be noise — but without it
+            the card headings jump straight from h1 to h3. */}
+        <h2 className="sr-only">Project portfolio</h2>
         <div
           role="group"
           aria-label="Filter projects by category"
@@ -134,10 +141,25 @@ export function ProjectsExplorer() {
               className="rise-in h-full"
               style={{ animationDelay: `${Math.min(i, 6) * 0.05}s` }}
             >
-              <ProjectCard project={p} onOpen={() => setOpenId(p.id)} />
+              {/* The top row sits above the fold and holds this page's LCP
+                  element, so it is not deferred; lazy loading there just
+                  delays the largest paint. Everything below stays lazy. */}
+              <ProjectCard
+                project={p}
+                onOpen={() => setOpenId(p.id)}
+                eager={i < 3}
+              />
             </div>
           ))}
         </div>
+
+        {/* Said once, quietly, instead of stamping every card: the photography
+            is matched to each project's facility type rather than shot on that
+            site. Delete this when real site photography replaces it. */}
+        <p className="mt-10 max-w-2xl text-xs leading-relaxed text-text-lo">
+          Project photography is representative of the systems we install.
+          Detailed specifications for any project are available on request.
+        </p>
       </div>
 
       {open && <ProjectDialog project={open} onClose={close} />}

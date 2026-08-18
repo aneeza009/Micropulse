@@ -24,7 +24,7 @@ const IMAGES: Record<string, string> = {
   commercial: "/images/commercial.jpg",
   installation: "/images/installation.jpg",
   maintenance: "/images/maintenance.jpg",
-  wholesale: "/images/wholesale.jpg",
+  wholesale: "/images/projects/ground-mount-array.jpg",
   delivery: "/images/hero-poster.webp",
 };
 

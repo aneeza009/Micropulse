@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { ProjectsExplorer } from "@/components/sections/ProjectsExplorer";
 import { CTABand } from "@/components/ui/CTABand";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Projects",
   description:
     "Solar and electrical projects delivered by MICROPULSE Engineering across hospitals, petrol stations, educational campuses, industrial facilities and commercial sites in Pakistan.",
-};
+  path: "/projects",
+});
 
 export default function ProjectsPage() {
   return (

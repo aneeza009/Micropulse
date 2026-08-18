@@ -29,9 +29,9 @@ export function Footer() {
 
           {/* nav */}
           <div>
-            <h4 className="font-display text-sm font-bold uppercase tracking-wider text-text-hi">
+            <h2 className="font-display text-sm font-bold uppercase tracking-wider text-text-hi">
               Explore
-            </h4>
+            </h2>
             <ul className="mt-4 space-y-2.5">
               {NAV.map((n) => (
                 <li key={n.href}>
@@ -48,9 +48,9 @@ export function Footer() {
 
           {/* services */}
           <div>
-            <h4 className="font-display text-sm font-bold uppercase tracking-wider text-text-hi">
+            <h2 className="font-display text-sm font-bold uppercase tracking-wider text-text-hi">
               Services
-            </h4>
+            </h2>
             <ul className="mt-4 space-y-2.5">
               {SERVICES.slice(0, 5).map((s) => (
                 <li key={s.id}>
@@ -67,9 +67,9 @@ export function Footer() {
 
           {/* contact */}
           <div>
-            <h4 className="font-display text-sm font-bold uppercase tracking-wider text-text-hi">
+            <h2 className="font-display text-sm font-bold uppercase tracking-wider text-text-hi">
               Contact
-            </h4>
+            </h2>
             <ul className="mt-4 space-y-3">
               {COMPANY.phones.map((p) => (
                 <li key={p.tel}>

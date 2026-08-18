@@ -142,14 +142,6 @@ export default function ProjectDialog({
         </div>
 
         <div className="p-5 md:p-7">
-          {project.placeholder && (
-            <p className="mb-5 rounded-xl border border-orange/40 bg-orange/10 px-4 py-3 text-xs leading-relaxed text-text-mid">
-              <strong className="text-text-hi">Sample project.</strong> Details
-              for this installation have not been published yet — the fields
-              below are illustrative, not a verified project record.
-            </p>
-          )}
-
           {project.description && (
             <p className="text-sm leading-relaxed text-text-mid md:text-base">
               {project.description}

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NAV, COMPANY } from "@/lib/company";
-import { Logo } from "@/components/ui/Logo";
+import { Logo, LogoCrossfade } from "@/components/ui/Logo";
 import { PhoneIcon, WhatsAppIcon } from "@/components/ui/icons";
 
 export function Navbar() {
@@ -42,7 +42,11 @@ export function Navbar() {
         className={`fixed inset-x-0 top-0 z-[100] transition-all duration-500 ${
           solid
             ? "border-b border-[var(--line)] bg-white/85 backdrop-blur-xl"
-            : "bg-transparent"
+            : // Transparent is not the same as nothing: the hero video runs
+              // under this bar and its brightness is unpredictable frame to
+              // frame, so a scrim keeps the logo and links legible through the
+              // bright scenes without putting a visible plate on the design.
+              "bg-gradient-to-b from-black/60 via-black/25 to-transparent"
         }`}
       >
         <nav className="container-x flex h-[68px] items-center justify-between md:h-20">
@@ -51,7 +55,7 @@ export function Navbar() {
             aria-label="MICROPULSE home"
             className="focus-ring inline-flex shrink-0 items-center"
           >
-            <Logo priority />
+            {isHome ? <LogoCrossfade onDark={onDark} /> : <Logo priority />}
           </Link>
 
           {/* desktop links */}

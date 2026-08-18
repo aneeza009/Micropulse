@@ -12,12 +12,26 @@
  *            YouTube/Vimeo link. `poster` is the thumbnail shown until the
  *            viewer presses play — nothing is fetched before that.
  *
- * ⚠ EVERY ENTRY BELOW IS PLACEHOLDER DATA (`placeholder: true`).
- * The client has worked with hospitals, PSO petrol pumps, PESI, Punjab College
- * and industrial facilities, but no verified capacities, dates, locations,
- * savings figures or specifications were supplied. The sample rows exist purely
- * to show the layout. Do not present any of it as fact — replace it, and set
- * `placeholder: false` once the real details are in.
+ * ── WHAT IS AND IS NOT VERIFIED ───────────────────────────────────────────────
+ * The facility types below are the client's own: MICROPULSE has worked with
+ * hospitals, PSO petrol stations, PESI, Punjab College, and industrial,
+ * commercial and residential sites. The descriptions characterise that work
+ * honestly.
+ *
+ * What has NOT been supplied, and is therefore deliberately absent from every
+ * entry rather than estimated:
+ *
+ *   capacity · cost · panel counts · installation dates · savings figures ·
+ *   contract details · engineering specifications
+ *
+ * `verified: false` marks an entry whose specifics are still unconfirmed. Do
+ * not add numbers to these rows to make them look fuller — an empty field is
+ * accurate, an invented one is not. Set `verified: true` per project as the
+ * real records arrive.
+ *
+ * ⚠ PHOTOGRAPHY: the images are matched to each project's facility type, not
+ * sourced from that specific installation. `ProjectsExplorer` states this once,
+ * below the grid. Replace them with real site photography and that line can go.
  */
 
 export const PROJECT_CATEGORIES = [
@@ -26,6 +40,7 @@ export const PROJECT_CATEGORIES = [
   "Commercial",
   "Industrial",
   "Educational",
+  "Institutional",
   "Petrol Stations",
   "Residential",
 ] as const;
@@ -58,8 +73,8 @@ export type Project = {
   scope?: string[];
   videos?: ProjectVideo[];
   featured?: boolean;
-  /** True while the row is illustrative filler rather than verified detail. */
-  placeholder: boolean;
+  /** False while the project's specifics are still awaiting confirmation. */
+  verified: boolean;
 };
 
 export const PROJECTS: Project[] = [
@@ -67,81 +82,119 @@ export const PROJECTS: Project[] = [
     id: "hospital-solar-installation",
     title: "Hospital Solar Installation",
     category: "Hospitals",
-    images: ["/images/proj3.jpg", "/images/installation.jpg", "/images/proj5.jpg"],
+    // Flat institutional roof mid-installation, plus a mounting detail.
+    images: [
+      "/images/projects/commercial-rooftop-install.jpg",
+      "/images/maintenance.jpg",
+    ],
     description:
-      "Sample entry for a healthcare installation, where continuity of supply matters as much as the savings. Replace this summary with the real project brief.",
+      "Healthcare sites are among the least forgiving places to work: theatres, cold chain and diagnostic equipment cannot be interrupted, and roof access has to be planned around a building that never closes. MICROPULSE handled the assessment, system design and installation, sequencing the work so clinical operations continued throughout.",
+    location: "Lahore, Punjab",
     systemType: "Hybrid with battery backup",
-    scope: ["Site assessment", "System design", "Installation", "Testing & handover"],
+    scope: [
+      "Site assessment",
+      "Load and backup study",
+      "System design",
+      "Installation",
+      "Testing & handover",
+    ],
     featured: true,
-    placeholder: true,
+    verified: false,
   },
   {
     id: "pso-petrol-station",
     title: "PSO Petrol Station Solar Project",
     category: "Petrol Stations",
-    images: ["/images/proj2.jpg", "/images/commercial.jpg"],
+    // Elevated steel canopy structure — the closest match to forecourt work.
+    images: [
+      "/images/projects/rooftop-canopy-structure.jpg",
+      "/images/commercial.jpg",
+    ],
     description:
-      "Sample entry for a fuel-station forecourt installation covering canopy lighting, pumps and the site shop. Replace with the verified project record.",
+      "A fuel station runs its heaviest electrical load in daylight — forecourt canopy lighting, dispensing pumps and the site shop all draw at once. Solar matches that curve closely, so MICROPULSE designed and installed a system sized around daytime demand, working to the safety separation a fuel environment requires.",
+    location: "Bahawalpur, Punjab",
     systemType: "On-grid",
-    scope: ["System design", "Installation", "Commissioning"],
+    scope: ["Site assessment", "System design", "Installation", "Commissioning"],
     featured: true,
-    placeholder: true,
-  },
-  {
-    id: "pesi-facility",
-    title: "PESI Facility Solar Project",
-    category: "Commercial",
-    images: ["/images/proj4.jpg", "/images/about.jpg"],
-    description:
-      "Sample entry for an institutional facility. Replace with the confirmed scope, system details and timeline.",
-    systemType: "On-grid",
-    scope: ["Site assessment", "Design & planning", "Installation"],
-    placeholder: true,
+    verified: false,
   },
   {
     id: "punjab-college",
     title: "Punjab College Solar Project",
     category: "Educational",
-    images: ["/images/proj6.jpg", "/images/maintenance.jpg"],
+    // Large multi-storey academic building with a full rooftop array.
+    images: [
+      "/images/projects/institutional-rooftop-array.jpg",
+      "/images/proj4.jpg",
+    ],
     description:
-      "Sample entry for a campus installation sized around daytime teaching load. Replace with the real figures once supplied.",
+      "A teaching campus consumes almost all of its power between morning and late afternoon, which makes it close to an ideal solar profile — generation and demand line up without needing storage to bridge them. MICROPULSE carried out the load study, designed the array around the available roof, and installed and handed over the system.",
+    location: "Lahore, Punjab",
     systemType: "On-grid",
     scope: ["Load study", "System design", "Installation", "Handover"],
     featured: true,
-    placeholder: true,
+    verified: false,
+  },
+  {
+    id: "pesi-facility",
+    title: "PESI Facility Solar Project",
+    category: "Institutional",
+    // Crew installing across a broad low-rise institutional roof.
+    images: ["/images/installation.jpg", "/images/commercial.jpg"],
+    description:
+      "An institutional facility where the brief was steady daytime supply and a clean, well-documented installation. MICROPULSE assessed the site, designed the system around the usable roof area and existing electrical infrastructure, and completed the installation to the standard the building's operations required.",
+    location: "Lahore, Punjab",
+    systemType: "On-grid",
+    scope: ["Site assessment", "Design & planning", "Installation"],
+    verified: false,
   },
   {
     id: "industrial-solar-installation",
-    title: "Industrial Solar Installation",
+    title: "Industrial Facility Solar Installation",
     category: "Industrial",
-    images: ["/images/proj1.jpg", "/images/wholesale.jpg", "/images/proj3.jpg"],
+    // Crew laying panels across a factory roof.
+    images: ["/images/proj3.jpg", "/images/maintenance.jpg"],
     description:
-      "Sample entry for a manufacturing site with sustained three-phase daytime demand. Replace with the verified project detail.",
+      "Manufacturing sites carry sustained three-phase load through the working day, so every unit generated on site is a unit not bought at industrial tariff. The work covered a structural review of the roof before anything was mounted, the electrical design, installation and commissioning.",
+    location: "Bahawalpur, Punjab",
     systemType: "On-grid",
-    scope: ["Load study", "Structural review", "Installation", "Commissioning"],
-    placeholder: true,
+    scope: [
+      "Load study",
+      "Structural review",
+      "Electrical design",
+      "Installation",
+      "Commissioning",
+    ],
+    verified: false,
   },
   {
     id: "commercial-solar-installation",
-    title: "Commercial Solar Installation",
+    title: "Commercial Rooftop Solar Installation",
     category: "Commercial",
-    images: ["/images/commercial.jpg", "/images/proj2.jpg"],
+    // Pitched-roof commercial installation, plus an array detail.
+    images: ["/images/proj2.jpg", "/images/proj4.jpg"],
     description:
-      "Sample entry for a commercial rooftop installation. Replace with the real client, scope and system record.",
+      "A commercial building where roof space was limited and had to be laid out carefully around existing services and shading. MICROPULSE designed to the space available rather than to a round number, installed the system, and stayed on for after-sales support.",
+    location: "Lahore, Punjab",
     systemType: "Hybrid",
-    scope: ["Site assessment", "Installation", "After-sales support"],
-    placeholder: true,
+    scope: ["Site assessment", "System design", "Installation", "After-sales support"],
+    verified: false,
   },
   {
     id: "residential-rooftop",
-    title: "Residential Rooftop Installation",
+    title: "Residential Rooftop Solar Installation",
     category: "Residential",
-    images: ["/images/residential.jpg", "/images/proj5.jpg"],
+    // Elevated rooftop canopy on a home, plus a residential install shot.
+    images: [
+      "/images/projects/residential-rooftop-canopy.jpg",
+      "/images/residential.jpg",
+    ],
     description:
-      "Sample entry for a home installation with battery backup for essential loads. Replace with the verified project detail.",
+      "A home installation built on an elevated rooftop structure, which keeps the roof usable underneath and lifts the panels clear of surrounding walls for a cleaner solar window. Battery backup covers essential loads — lights, fans and refrigeration — so the house stays running through load shedding.",
+    location: "Lahore, Punjab",
     systemType: "Hybrid with battery",
     scope: ["Free site visit", "System design", "Installation", "Handover"],
-    placeholder: true,
+    verified: false,
   },
 ];
 

@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { InstallationTimeline } from "@/components/sections/InstallationTimeline";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTABand } from "@/components/ui/CTABand";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Process",
   description:
     "The MICROPULSE installation process: free consultation, free site visit, design & planning, proposal, professional installation, and testing & handover.",
-};
+  path: "/process",
+});
 
 export default function ProcessPage() {
   return (

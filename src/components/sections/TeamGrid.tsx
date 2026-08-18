@@ -19,7 +19,7 @@ function Portrait({
           src={member.photo}
           alt={member.name}
           fill
-          sizes="(max-width: 768px) 100vw, 320px"
+          sizes="(max-width: 640px) 100vw, 200px"
           className="object-cover"
         />
       </div>
@@ -39,6 +39,12 @@ function Portrait({
   );
 }
 
+/**
+ * Founder card. Deliberately mid-sized: the portrait is a fixed 176–192px band
+ * rather than a full-height panel, so two of these sit side by side as a normal
+ * row of the page instead of a pair of posters that push everything else below
+ * the fold.
+ */
 function LeadershipCard({ member, delay }: { member: TeamMember; delay: number }) {
   return (
     <Reveal
@@ -48,20 +54,18 @@ function LeadershipCard({ member, delay }: { member: TeamMember; delay: number }
     >
       <Portrait
         member={member}
-        className="h-56 w-full shrink-0 sm:h-auto sm:w-56 lg:w-64"
-        monogramClass="text-6xl"
+        className="h-44 w-full shrink-0 sm:h-auto sm:w-44 lg:w-48"
+        monogramClass="text-4xl"
       />
-      <div className="p-6 md:p-8">
-        <h3 className="font-display text-xl font-bold text-text-hi md:text-2xl">
+      <div className="p-5 md:p-6">
+        <h3 className="font-display text-lg font-bold text-text-hi md:text-xl">
           {member.name}
         </h3>
-        <p className="mt-1 font-display text-sm font-semibold uppercase tracking-widest text-orange">
+        <p className="mt-1 font-display text-xs font-semibold uppercase tracking-widest text-orange">
           {member.role}
         </p>
-        <div className="mt-4 h-px w-12 bg-gradient-to-r from-gold to-orange" />
-        <p className="mt-4 text-sm leading-relaxed text-text-mid md:text-base">
-          {member.bio}
-        </p>
+        <div className="mt-3 h-px w-10 bg-gradient-to-r from-gold to-orange" />
+        <p className="mt-3 text-sm leading-relaxed text-text-mid">{member.bio}</p>
       </div>
     </Reveal>
   );
@@ -127,6 +131,7 @@ export function TeamGrid() {
             }
             intro="Design, project management, electrical engineering and after-sales support — the functions that carry a project from first site visit to long-term performance."
           />
+
           <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {TEAM.map((m, i) => (
               <MemberCard key={m.id} member={m} delay={(i % 3) * 0.07} />

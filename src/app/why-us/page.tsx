@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { ValueProp } from "@/components/sections/ValueProp";
@@ -6,11 +7,12 @@ import { TrustStats } from "@/components/sections/TrustStats";
 import { Projects } from "@/components/sections/Projects";
 import { CTABand } from "@/components/ui/CTABand";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Why Us",
   description:
     "Why choose MICROPULSE: experienced team, A-grade products, neat & safe installation, after-sales support and a commitment to customer satisfaction.",
-};
+  path: "/why-us",
+});
 
 export default function WhyUsPage() {
   return (
