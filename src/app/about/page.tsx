@@ -11,7 +11,7 @@ import { CTABand } from "@/components/ui/CTABand";
 export const metadata: Metadata = pageMeta({
   title: "About",
   description:
-    "MicroPulse Solar Energy — 12 years of solar engineering experience and 50+ MW installed capacity in Pakistan. A-grade equipment, safe installation and after-sales support.",
+    "MicroPulse Solar Energy — 12+ years of solar engineering experience and 50+ MW installed capacity in Pakistan. A-grade equipment, safe installation and after-sales support.",
   path: "/about",
 });
 

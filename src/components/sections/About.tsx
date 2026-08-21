@@ -28,7 +28,7 @@ export function About() {
           <Reveal delay={0.1}>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-text-mid md:text-lg">
               MicroPulse Solar Energy is an engineering company with{" "}
-              <strong className="text-text-hi">12 years of experience</strong> and
+              <strong className="text-text-hi">12+ years of experience</strong> and
               more than{" "}
               <strong className="text-text-hi">50 MW of installed capacity</strong>{" "}
               as of 2026. We provide complete, high-quality solutions — including

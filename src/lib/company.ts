@@ -63,7 +63,7 @@ export const COMPANY = {
 } as const;
 
 export const STATS = [
-  { value: 12, suffix: "", label: "Years of Experience" },
+  { value: 12, suffix: "+", label: "Years of Experience" },
   { value: 50, suffix: "+", label: "MW Installed Capacity" },
   { value: 100, suffix: "%", label: "Safety Compliance" },
   { value: 6, suffix: "", label: "Months After-Sales Service" },
