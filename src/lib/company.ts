@@ -23,7 +23,10 @@ export const COMPANY = {
   subTagline: "Smart Solar Solutions for a Better Future.",
   intro:
     "Switch to clean, reliable and affordable solar energy and take control of your electricity bills.",
-  founded: 2018, // 8+ years of experience as of 2026
+  // Derived from the client-stated 12 years of experience as of 2026.
+  // Not rendered anywhere today; kept consistent with STATS so the two
+  // cannot drift apart. Confirm the exact founding year before using it.
+  founded: 2014,
   afterSalesMonths: 6,
   phones: [
     { label: "+92 335 0815954", tel: "+923350815954" },
@@ -60,7 +63,7 @@ export const COMPANY = {
 } as const;
 
 export const STATS = [
-  { value: 8, suffix: "+", label: "Years of Experience" },
+  { value: 12, suffix: "", label: "Years of Experience" },
   { value: 50, suffix: "+", label: "MW Installed Capacity" },
   { value: 100, suffix: "%", label: "Safety Compliance" },
   { value: 6, suffix: "", label: "Months After-Sales Service" },

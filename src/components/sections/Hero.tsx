@@ -7,7 +7,7 @@ import { COMPANY } from "@/lib/company";
 import { PhoneIcon, WhatsAppIcon, ArrowIcon } from "@/components/ui/icons";
 
 const miniStats = [
-  { v: "8+", l: "Years Experience" },
+  { v: "12", l: "Years Experience" },
   { v: "50+ MW", l: "Installed Capacity" },
   { v: "100%", l: "Safety Compliance" },
 ];
