@@ -8,7 +8,7 @@ import { PhoneIcon, WhatsAppIcon, ArrowIcon } from "@/components/ui/icons";
 
 const miniStats = [
   { v: "8+", l: "Years Experience" },
-  { v: "2+ MW", l: "Installed Capacity" },
+  { v: "50+ MW", l: "Installed Capacity" },
   { v: "100%", l: "Safety Compliance" },
 ];
 

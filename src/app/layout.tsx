@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Sora, Inter } from "next/font/google";
 import { COMPANY } from "@/lib/company";
-import { SITE_URL } from "@/lib/seo";
+import { SITE_NAME, SITE_URL } from "@/lib/seo";
 import { Navbar } from "@/components/sections/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import { FloatingActions } from "@/components/ui/FloatingActions";
@@ -27,11 +27,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "MICROPULSE Engineering | Smart Solar Solutions",
-    template: "%s | MICROPULSE Engineering",
+    default: `${SITE_NAME} | Smart Solar Solutions`,
+    template: `%s | ${SITE_NAME}`,
   },
   description:
-    "MICROPULSE Engineering (Pvt.) Ltd. — professional solar engineering in Pakistan. Residential, commercial, hybrid, on-grid and off-grid systems with expert installation, A-grade equipment and after-sales support.",
+    "MicroPulse Solar Energy (Pvt.) Ltd. — professional solar engineering in Pakistan. Residential, commercial, hybrid, on-grid and off-grid systems with expert installation, A-grade equipment and after-sales support.",
   keywords: [
     "solar engineering Pakistan",
     "solar installation Lahore",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     "off-grid solar",
     "commercial solar",
     "residential solar",
-    "MICROPULSE Engineering",
+    "MicroPulse Solar Energy",
   ],
   authors: [{ name: COMPANY.legalName }],
   // Homepage only. Every other route sets its own via `pageMeta`, because a
@@ -50,14 +50,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_PK",
     url: SITE_URL,
-    siteName: "MICROPULSE Engineering",
-    title: "MICROPULSE Engineering | Smart Solar Solutions",
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} | Smart Solar Solutions`,
     description:
       "Professional solar engineering in Pakistan — residential, commercial, hybrid, on-grid & off-grid systems. Powering Today. Energizing Tomorrow.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "MICROPULSE Engineering | Smart Solar Solutions",
+    title: `${SITE_NAME} | Smart Solar Solutions`,
     description:
       "Professional solar engineering in Pakistan. Powering Today. Energizing Tomorrow.",
   },

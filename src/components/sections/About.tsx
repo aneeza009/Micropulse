@@ -27,10 +27,10 @@ export function About() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-text-mid md:text-lg">
-              MicroPulse Engineering is an engineering company with{" "}
+              MicroPulse Solar Energy is an engineering company with{" "}
               <strong className="text-text-hi">8+ years of experience</strong> and
               more than{" "}
-              <strong className="text-text-hi">2 MW of installed capacity</strong>{" "}
+              <strong className="text-text-hi">50 MW of installed capacity</strong>{" "}
               as of 2026. We provide complete, high-quality solutions — including
               A-grade equipment and high-earning opportunities.
             </p>
@@ -82,7 +82,7 @@ export function About() {
             {/* floating stat card */}
             <div className="absolute -bottom-6 -left-4 hidden rounded-2xl border border-[var(--line)] bg-white px-6 py-4 shadow-[var(--shadow-card)] sm:block">
               <div className="font-display text-3xl font-extrabold text-gradient-solar">
-                2+ MW
+                50+ MW
               </div>
               <div className="text-xs uppercase tracking-wider text-text-lo">
                 Installed Capacity

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const SITE_URL = "https://micropulse.com.pk";
-export const SITE_NAME = "MICROPULSE Engineering";
+export const SITE_NAME = "MicroPulse Solar Energy";
 
 /**
  * Metadata for one route.

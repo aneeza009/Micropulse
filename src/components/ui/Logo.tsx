@@ -35,14 +35,14 @@ export function Logo({
     <>
       <Image
         src={SOURCES[variant]}
-        alt="MICROPULSE Engineering"
+        alt="MicroPulse Solar Energy"
         width={560}
         height={396}
         priority={priority}
         sizes="120px"
         className={className}
       />
-      <span className="sr-only">MICROPULSE Engineering</span>
+      <span className="sr-only">MicroPulse Solar Energy</span>
     </>
   );
 }
@@ -86,7 +86,7 @@ export function LogoCrossfade({
           onDark ? "opacity-100" : "opacity-0"
         }`}
       />
-      <span className="sr-only">MICROPULSE Engineering</span>
+      <span className="sr-only">MicroPulse Solar Energy</span>
     </span>
   );
 }

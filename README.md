@@ -1,7 +1,14 @@
-# MICROPULSE Engineering — Website
+# MicroPulse Solar Energy — Website
 
-Premium marketing website for **MICROPULSE ENGINEERING (PVT.) LTD.**, a solar
+Premium marketing website for **MicroPulse Solar Energy (PVT.) LTD.**, a solar
 engineering company in Pakistan.
+
+**Corporate structure:** MicroPulse Engineering is the main company; MicroPulse
+Solar Energy (Pvt.) Ltd. is its solar-energy subsidiary and is the entity this
+website belongs to. `COMPANY.legalName` is therefore the *subsidiary*, and it is
+the only name shown customer-facing (footer, titles, Open Graph, JSON-LD). The
+parent is named in exactly one place — the About page's "Our Company Structure"
+band, via `COMPANY.parentName`. Do not use `parentName` as the site name.
 
 _Powering Today. Energizing Tomorrow._
 
@@ -51,7 +58,11 @@ until supplied by the client.
 ### ⚠ What is verified, and what still needs the client
 
 - **`src/lib/company.ts`** — verified. Both phone numbers, both office
-  addresses, services, process and FAQs are client-supplied.
+  addresses, services, process and FAQs are client-supplied. The Lahore address
+  (Park View Commercial, Bahria Town) **replaced** an earlier Park View City
+  address — a different location, not a reformat. Only one Lahore office is
+  listed; if both are in use, add the second as its own `offices` entry rather
+  than merging the two.
 - **`src/lib/team.ts`** — Muhammad Bilal Zahid's profile is client-supplied and
   final; Muhammad Tayyab Zaid's **title** is confirmed but his bio is written
   from that title alone. The six `TEAM` entries carry a name, a role and a

@@ -33,7 +33,7 @@ export const LEADERSHIP: TeamMember[] = [
     role: "CEO & Co-Founder",
     // Client-supplied. Do not extend with qualifications, certifications,
     // employers or project claims that were not provided.
-    bio: "Co-founder and CEO of MICROPULSE Engineering. Working in power and electrical systems since 2015, he brings practical experience across electrical engineering, energy systems, solar solutions and project execution — and sets the engineering standard the company delivers to.",
+    bio: "Co-founder and CEO of MicroPulse Solar Energy. Working in power and electrical systems since 2015, he brings practical experience across electrical engineering, energy systems, solar solutions and project execution — and sets the engineering standard the company delivers to.",
     leadership: true,
   },
   {
@@ -42,7 +42,7 @@ export const LEADERSHIP: TeamMember[] = [
     role: "COO & Co-Founder",
     // Title is client-confirmed. This description is written from that role
     // alone — no tenure, credentials or achievements have been supplied.
-    bio: "Co-founder and COO of MICROPULSE Engineering. He leads day-to-day operations across both offices — project delivery, site teams and service quality — so that every installation is completed safely, on schedule and to the standard the company commits to.",
+    bio: "Co-founder and COO of MicroPulse Solar Energy. He leads day-to-day operations across both offices — project delivery, site teams and service quality — so that every installation is completed safely, on schedule and to the standard the company commits to.",
     leadership: true,
   },
 ];

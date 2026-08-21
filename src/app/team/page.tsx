@@ -7,7 +7,7 @@ import { CTABand } from "@/components/ui/CTABand";
 export const metadata: Metadata = pageMeta({
   title: "Team",
   description:
-    "Meet the people behind MICROPULSE Engineering — the leadership and the engineering and operations team delivering solar and electrical projects across Pakistan.",
+    "Meet the people behind MicroPulse Solar Energy — the leadership and the engineering and operations team delivering solar and electrical projects across Pakistan.",
   path: "/team",
 });
 
