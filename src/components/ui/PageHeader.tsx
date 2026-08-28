@@ -1,19 +1,40 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { JsonLd } from "@/components/ui/JsonLd";
+import { SITE_URL } from "@/lib/seo";
 
 export function PageHeader({
   eyebrow,
   title,
   intro,
   crumb,
+  path,
 }: {
   eyebrow: string;
   title: ReactNode;
   intro?: ReactNode;
   crumb: string;
+  /** Route path of this page, leading slash. Drives the breadcrumb markup. */
+  path: string;
 }) {
   return (
     <section className="relative overflow-hidden border-b border-[var(--line)] bg-[var(--ink-850)] pt-28 pb-14 md:pt-36 md:pb-20">
+      {/* Machine-readable twin of the visible breadcrumb below. */}
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: crumb,
+              item: `${SITE_URL}${path}`,
+            },
+          ],
+        }}
+      />
       {/* subtle brand bloom */}
       <div
         aria-hidden

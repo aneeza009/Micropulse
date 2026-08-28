@@ -106,11 +106,13 @@ the long form.
   descriptions. The hero `<h1>` keeps the brand tagline. `"best solar company in
   Lahore"` appears **once**, on `/why-us`, framed as the buyer's question rather
   than a self-awarded superlative — keep it that way.
-- **Icons**: `app/favicon.ico` (16/32/48), `app/icon.png` (512) and
-  `app/apple-icon.png` (180) use the App Router convention, which emits the
-  `<link rel="icon">` and `<link rel="apple-touch-icon">` tags.
-  `public/apple-touch-icon.png` is a copy at the root path for older iOS, which
-  probes that URL directly. The mark sits on a rounded brand-ink badge with
+- **Icons**: `app/favicon.ico` (16/32/48), `app/icon.png` (192),
+  `app/icon1.png` (512) and `app/apple-icon.png` (180) use the App Router
+  convention, which emits the `<link rel="icon">` and
+  `<link rel="apple-touch-icon">` tags. `public/apple-touch-icon.png` is a copy
+  at the root path for older iOS, which probes that URL directly. 192 and 48
+  are deliberate: Google's favicon crawler wants a square whose side is a
+  multiple of 48px, which 512 is not. The mark sits on a rounded brand-ink badge with
   **transparent corners** rather than a full-bleed transparent emblem: the
   artwork is 29% deep purple, which measures 1.17:1 against a dark browser tab
   and disappears entirely; the gold half measures 1.45:1 against a light tab.
@@ -119,6 +121,27 @@ the long form.
 - **`public/images/og-cover.jpg`** (1200x630) is the shared social preview,
   generated from site branding. Regenerate it if the tagline or company name
   changes.
+
+### Why the site can be correct and still look wrong in Google
+
+Search results lag deployment. Google shows the title, description and favicon
+from its **last crawl**, not from what the server returns now, and the favicon
+crawler runs on its own schedule — separate from, and slower than, the page
+crawler. A stale SERP entry is not evidence of a broken build. Check the server
+first (`curl -sI https://micropulsepk.com/favicon.ico`); if that is correct, the
+remaining wait is Google's.
+
+What only the site owner can do, and what actually moves a brand query:
+
+1. **Google Search Console** — verify the property, submit
+   `https://micropulsepk.com/sitemap.xml`, then use URL Inspection →
+   *Request indexing* on the homepage after any metadata change.
+2. **Google Business Profile** — create/claim it as *MicroPulse Solar Energy Pvt
+   Ltd*, category *Solar energy company*, at the Bahria Town address, using the
+   same phone numbers as `company.ts`. This is the single biggest factor for
+   "solar company in Lahore" style queries, and none of it lives in this repo.
+3. Keep the name, address and phone **byte-identical** everywhere they appear
+   off-site (directories, social, invoices). Mismatches split the entity.
 
 ## Assets to replace with client-supplied media
 

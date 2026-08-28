@@ -17,6 +17,7 @@ export default function ProjectsPage() {
       <PageHeader
         eyebrow="Our Work"
         crumb="Projects"
+        path="/projects"
         title={
           <>
             Powering real-world{" "}

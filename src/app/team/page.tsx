@@ -17,6 +17,7 @@ export default function TeamPage() {
       <PageHeader
         eyebrow="Our Team"
         crumb="Team"
+        path="/team"
         title={
           <>
             Meet the people behind{" "}

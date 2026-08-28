@@ -113,7 +113,15 @@ const jsonLd = {
       "@type": "Organization",
       "@id": ORG_ID,
       name: COMPANY.legalName,
-      alternateName: COMPANY.shortName,
+      // Real spelling variants of the same name, not invented brands. These
+      // help search engines resolve "micropulse solar", "MicroPulse Solar
+      // Energy" and the full legal form to one entity — which matters here
+      // because unrelated companies also trade as "Micropulse".
+      alternateName: [
+        COMPANY.shortName,
+        "MicroPulse Solar",
+        "Micropulse Solar Energy Pvt Ltd",
+      ],
       url: SITE_URL,
       logo: {
         "@type": "ImageObject",

@@ -19,6 +19,7 @@ export default function ServicesPage() {
       <PageHeader
         eyebrow="What We Provide"
         crumb="Services"
+        path="/services"
         title={
           <>
             Solar services,{" "}

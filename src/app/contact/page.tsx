@@ -16,6 +16,7 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Contact"
         crumb="Contact"
+        path="/contact"
         title={
           <>
             Let&rsquo;s build your{" "}

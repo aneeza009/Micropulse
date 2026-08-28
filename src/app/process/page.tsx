@@ -3,6 +3,8 @@ import { pageMeta } from "@/lib/seo";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { InstallationTimeline } from "@/components/sections/InstallationTimeline";
 import { FAQ } from "@/components/sections/FAQ";
+import { JsonLd } from "@/components/ui/JsonLd";
+import { FAQS } from "@/lib/company";
 import { CTABand } from "@/components/ui/CTABand";
 
 export const metadata: Metadata = pageMeta({
@@ -18,6 +20,7 @@ export default function ProcessPage() {
       <PageHeader
         eyebrow="Our Installation Process"
         crumb="Process"
+        path="/process"
         title={
           <>
             Your solar journey,{" "}
@@ -28,6 +31,18 @@ export default function ProcessPage() {
       />
       <InstallationTimeline />
       <FAQ />
+      {/* Only valid because these exact Q&As are rendered above. */}
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQS.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }}
+      />
       <CTABand />
     </>
   );

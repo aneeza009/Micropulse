@@ -20,6 +20,7 @@ export default function WhyUsPage() {
       <PageHeader
         eyebrow="Why Choose Us"
         crumb="Why Us"
+        path="/why-us"
         title={
           <>
             Built on trust,{" "}

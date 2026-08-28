@@ -21,6 +21,7 @@ export default function AboutPage() {
       <PageHeader
         eyebrow="About MicroPulse Solar Energy"
         crumb="About"
+        path="/about"
         title={
           <>
             A solar energy company{" "}

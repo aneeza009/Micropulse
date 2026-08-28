@@ -19,6 +19,7 @@ export default function SolutionsPage() {
       <PageHeader
         eyebrow="Complete Solar Solutions"
         crumb="Solutions"
+        path="/solutions"
         title={
           <>
             Hybrid · On-Grid ·{" "}
