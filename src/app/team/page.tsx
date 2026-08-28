@@ -7,7 +7,7 @@ import { CTABand } from "@/components/ui/CTABand";
 export const metadata: Metadata = pageMeta({
   title: "Team",
   description:
-    "Meet the people behind MicroPulse Solar Energy — the leadership and the engineering and operations team delivering solar and electrical projects across Pakistan.",
+    "Meet the people behind MicroPulse Solar Energy Pvt Ltd — the leadership and the engineering and operations team delivering solar projects from Lahore across Pakistan.",
   path: "/team",
 });
 
@@ -20,7 +20,7 @@ export default function TeamPage() {
         title={
           <>
             Meet the people behind{" "}
-            <span className="text-gradient-solar">MICROPULSE.</span>
+            <span className="text-gradient-solar">MicroPulse Solar Energy.</span>
           </>
         }
         intro="Engineering expertise, energy innovation and disciplined execution — the team that designs, installs and supports every system we deliver."

@@ -1,10 +1,14 @@
-# MicroPulse Solar Energy — Website
+# MicroPulse Solar Energy Pvt Ltd — Website
 
-Premium marketing website for **MicroPulse Solar Energy (PVT.) LTD.**, a solar
-engineering company in Pakistan.
+Premium marketing website for **MicroPulse Solar Energy Pvt Ltd**, a solar
+energy company in Lahore, Pakistan.
+
+Canonical domain: **https://micropulsepk.com** (`SITE_URL` in
+[`src/lib/seo.ts`](src/lib/seo.ts) — the sitemap, robots.txt, canonicals,
+Open Graph URLs and JSON-LD all derive from it, so a domain change is one line).
 
 **Corporate structure:** MicroPulse Engineering is the main company; MicroPulse
-Solar Energy (Pvt.) Ltd. is its solar-energy subsidiary and is the entity this
+Solar Energy Pvt Ltd is its solar-energy subsidiary and is the entity this
 website belongs to. `COMPANY.legalName` is therefore the *subsidiary*, and it is
 the only name shown customer-facing (footer, titles, Open Graph, JSON-LD). The
 parent is named in exactly one place — the About page's "Our Company Structure"
@@ -79,6 +83,42 @@ until supplied by the client.
 - **Project photography** is matched to each project's facility *type*, not
   shot on that site. `ProjectsExplorer` states this once beneath the grid;
   delete that line when real site photography replaces the current images.
+
+## SEO & entity notes
+
+`SITE_NAME` is the full **"MicroPulse Solar Energy Pvt Ltd"**, not the bare brand
+word, and that is deliberate. Several unrelated companies trade as
+"Micropulse" (medical devices, electronics), so the brand word alone is not a
+distinguishing entity signal. The full name plus *Lahore* is what separates this
+business in search. The logo keeps its own styling; only identifying text uses
+the long form.
+
+- **Structured data** lives in [`src/app/layout.tsx`](src/app/layout.tsx) as a
+  `@graph` linking `Organization`, `LocalBusiness`/`ElectricalContractor` and
+  `WebSite` by `@id`. There is no `SolarEnergyCompany` type in schema.org — the
+  two published types above are the closest, with the category carried in
+  `knowsAbout`. Deliberately **absent** because none was supplied:
+  `aggregateRating`, `review`, `sameAs` (social profiles), `openingHours`,
+  `geo` coordinates, awards, certifications and registration numbers. Add each
+  only when the real value exists — invented markup is a manual-action risk.
+- **Local intent** is carried by real visible copy (hero eyebrow, About
+  heading and body, Contact intro, service and project intros) plus titles and
+  descriptions. The hero `<h1>` keeps the brand tagline. `"best solar company in
+  Lahore"` appears **once**, on `/why-us`, framed as the buyer's question rather
+  than a self-awarded superlative — keep it that way.
+- **Icons**: `app/favicon.ico` (16/32/48), `app/icon.png` (512) and
+  `app/apple-icon.png` (180) use the App Router convention, which emits the
+  `<link rel="icon">` and `<link rel="apple-touch-icon">` tags.
+  `public/apple-touch-icon.png` is a copy at the root path for older iOS, which
+  probes that URL directly. The mark sits on a rounded brand-ink badge with
+  **transparent corners** rather than a full-bleed transparent emblem: the
+  artwork is 29% deep purple, which measures 1.17:1 against a dark browser tab
+  and disappears entirely; the gold half measures 1.45:1 against a light tab.
+  The badge puts the whole mark at 6.2:1 on either theme. Do not "fix" this by
+  removing the badge.
+- **`public/images/og-cover.jpg`** (1200x630) is the shared social preview,
+  generated from site branding. Regenerate it if the tagline or company name
+  changes.
 
 ## Assets to replace with client-supplied media
 

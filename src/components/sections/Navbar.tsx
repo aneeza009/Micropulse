@@ -52,7 +52,7 @@ export function Navbar() {
         <nav className="container-x flex h-[68px] items-center justify-between md:h-20">
           <Link
             href="/"
-            aria-label="MICROPULSE home"
+            aria-label="MicroPulse Solar Energy — home"
             className="focus-ring inline-flex shrink-0 items-center"
           >
             {isHome ? <LogoCrossfade onDark={onDark} /> : <Logo priority />}

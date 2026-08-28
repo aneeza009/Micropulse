@@ -90,7 +90,7 @@ export function Hero() {
       {/* Content */}
       <div className="container-x relative z-[3] flex min-h-[100svh] flex-col justify-center pt-28 pb-16">
         <div className="rise-in max-w-2xl">
-          <span className="eyebrow mb-6">Solar Engineering · Pakistan</span>
+          <span className="eyebrow mb-6">Solar Energy Company · Lahore, Pakistan</span>
 
           <h1 className="mt-5 text-[12vw] leading-[0.95] text-white [text-shadow:0_2px_24px_rgba(0,0,0,0.55)] sm:text-6xl md:text-7xl lg:text-[5.4rem]">
             <span className="block">Powering Today.</span>
@@ -100,8 +100,9 @@ export function Hero() {
           </h1>
 
           <p className="mt-6 max-w-xl text-base leading-relaxed text-white/85 [text-shadow:0_1px_12px_rgba(0,0,0,0.5)] md:text-lg">
-            {COMPANY.intro} Smart solar solutions engineered for reliability,
-            savings and a cleaner future.
+            {COMPANY.intro} MicroPulse Solar Energy Pvt Ltd designs and
+            installs solar systems from our Lahore office for homes, businesses
+            and industry across Pakistan.
           </p>
 
           {/* CTAs */}

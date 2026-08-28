@@ -16,7 +16,7 @@ export function About() {
         {/* Left — story */}
         <div>
           <Reveal>
-            <span className="eyebrow">About MICROPULSE</span>
+            <span className="eyebrow">About MicroPulse Solar Energy</span>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="mt-5 text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
@@ -27,12 +27,14 @@ export function About() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-text-mid md:text-lg">
-              MicroPulse Solar Energy is an engineering company with{" "}
+              MicroPulse Solar Energy Pvt Ltd is a solar energy company based
+              in Lahore, Pakistan, with{" "}
               <strong className="text-text-hi">12+ years of experience</strong> and
               more than{" "}
               <strong className="text-text-hi">50 MW of installed capacity</strong>{" "}
-              as of 2026. We provide complete, high-quality solutions — including
-              A-grade equipment and high-earning opportunities.
+              as of 2026. We provide complete, high-quality solar solutions
+              across Lahore and the rest of Pakistan — including A-grade
+              equipment and high-earning opportunities.
             </p>
           </Reveal>
 
@@ -65,7 +67,7 @@ export function About() {
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[26px] border border-[var(--line)] shadow-[var(--shadow-card)]">
               <Image
                 src="/images/about.jpg"
-                alt="MICROPULSE engineer installing solar panels on a rooftop"
+                alt="MicroPulse Solar Energy engineer installing solar panels on a rooftop in Lahore"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"

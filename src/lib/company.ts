@@ -1,24 +1,26 @@
 /**
- * MicroPulse Solar Energy (PVT.) LTD.
+ * MicroPulse Solar Energy Pvt Ltd
  * Single source of truth — VERIFIED company facts only.
  * Do not add certifications, awards, warranties, brands, financing,
  * testimonials, or project numbers unless the client supplies them.
  *
  * CORPORATE STRUCTURE — this website belongs to the solar company.
  * MicroPulse Engineering is the main company; MicroPulse Solar Energy
- * (Pvt.) Ltd. is its solar-energy subsidiary and is the entity named
+ * Pvt Ltd is its solar-energy subsidiary and is the entity named
  * customer-facing throughout this site (footer, metadata, structured data).
  * `parentName` exists only so the About page can state that relationship in
  * one place; it is not a second brand and must not be used as the site name.
  */
 
 export const COMPANY = {
-  legalName: "MicroPulse Solar Energy (PVT.) LTD.",
+  legalName: "MicroPulse Solar Energy Pvt Ltd",
   /** Short customer-facing form of `legalName`. Use in prose and metadata. */
   shortName: "MicroPulse Solar Energy",
   /** Parent company. Only referenced by the About page's structure section. */
   parentName: "MicroPulse Engineering",
   brand: "MICROPULSE",
+  /** Head office city. Local search intent is built around this. */
+  city: "Lahore",
   tagline: "Powering Today. Energizing Tomorrow.",
   subTagline: "Smart Solar Solutions for a Better Future.",
   intro:
@@ -37,7 +39,7 @@ export const COMPANY = {
     href:
       "https://wa.me/923350815954?text=" +
       encodeURIComponent(
-        "Hello MICROPULSE, I'd like to book a free site visit / consultation for a solar system."
+        "Hello MicroPulse Solar Energy, I'd like to book a free site visit / consultation for a solar system."
       ),
   },
   offices: [

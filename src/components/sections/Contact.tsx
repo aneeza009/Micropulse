@@ -34,8 +34,9 @@ export function Contact() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mx-auto mt-5 max-w-xl text-text-mid md:text-lg">
-              Talk to the MicroPulse team about your solar requirements. Book a
-              free site visit or a free consultation — no obligation.
+              Talk to the MicroPulse Solar Energy team about your solar
+              requirements anywhere in Lahore or across Pakistan. Book a free
+              site visit or a free consultation — no obligation.
             </p>
           </Reveal>
           <Reveal delay={0.15}>

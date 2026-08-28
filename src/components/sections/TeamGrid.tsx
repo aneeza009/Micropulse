@@ -109,7 +109,7 @@ export function TeamGrid() {
                 <span className="text-gradient-solar">set the standard.</span>
               </>
             }
-            intro="MICROPULSE was founded by engineers, and it is still run by them."
+            intro="MicroPulse Solar Energy Pvt Ltd was founded by engineers, and it is still run by them."
           />
           <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
             {LEADERSHIP.map((m, i) => (

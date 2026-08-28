@@ -9,9 +9,9 @@ import { ValueProp } from "@/components/sections/ValueProp";
 import { CTABand } from "@/components/ui/CTABand";
 
 export const metadata: Metadata = pageMeta({
-  title: "About",
+  title: "About Us",
   description:
-    "MicroPulse Solar Energy — 12+ years of solar engineering experience and 50+ MW installed capacity in Pakistan. A-grade equipment, safe installation and after-sales support.",
+    "MicroPulse Solar Energy Pvt Ltd is a solar energy company in Lahore, Pakistan, with 12+ years of experience and 50+ MW installed capacity. A-grade equipment, safe installation and after-sales support.",
   path: "/about",
 });
 
@@ -19,15 +19,15 @@ export default function AboutPage() {
   return (
     <>
       <PageHeader
-        eyebrow="About MICROPULSE"
+        eyebrow="About MicroPulse Solar Energy"
         crumb="About"
         title={
           <>
-            Engineers who know{" "}
-            <span className="text-gradient-solar">solar systems.</span>
+            A solar energy company{" "}
+            <span className="text-gradient-solar">in Lahore.</span>
           </>
         }
-        intro="An engineering company delivering complete, high-quality solar solutions across Pakistan."
+        intro="MicroPulse Solar Energy Pvt Ltd is based in Bahria Town, Lahore, and delivers complete, high-quality solar solutions for homes, businesses and industry across Pakistan."
       />
       <About />
       <CompanyStructure />

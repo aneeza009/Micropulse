@@ -7,9 +7,9 @@ import { WholesaleSupply } from "@/components/sections/WholesaleSupply";
 import { CTABand } from "@/components/ui/CTABand";
 
 export const metadata: Metadata = pageMeta({
-  title: "Solutions",
+  title: "Solar Solutions",
   description:
-    "Hybrid, on-grid and off-grid solar systems engineered by MICROPULSE — backup power, bill savings and full energy independence, plus nationwide wholesale supply.",
+    "Hybrid, on-grid and off-grid solar solutions engineered by MicroPulse Solar Energy Pvt Ltd in Lahore — backup power, bill savings and full energy independence, plus nationwide wholesale supply.",
   path: "/solutions",
 });
 

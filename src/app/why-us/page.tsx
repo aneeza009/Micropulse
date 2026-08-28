@@ -8,9 +8,9 @@ import { Projects } from "@/components/sections/Projects";
 import { CTABand } from "@/components/ui/CTABand";
 
 export const metadata: Metadata = pageMeta({
-  title: "Why Us",
+  title: "Why Choose Us",
   description:
-    "Why choose MICROPULSE: experienced team, A-grade products, neat & safe installation, after-sales support and a commitment to customer satisfaction.",
+    "What to look for in a solar company in Lahore — and how MicroPulse Solar Energy Pvt Ltd measures up: experienced team, A-grade products, neat and safe installation and after-sales support.",
   path: "/why-us",
 });
 
@@ -26,7 +26,7 @@ export default function WhyUsPage() {
             <span className="text-gradient-solar">backed by engineering.</span>
           </>
         }
-        intro="Every MicroPulse installation is delivered to a single standard — safe, clean and made to last."
+        intro="Choosing the best solar company in Lahore comes down to a few checkable things: who designs the system, who installs it, what equipment goes on the roof and who answers the phone afterwards. Here is where MicroPulse Solar Energy Pvt Ltd stands on each."
       />
       <TrustStats />
       <WhyChooseUs />

@@ -6,9 +6,9 @@ import { FAQ } from "@/components/sections/FAQ";
 import { CTABand } from "@/components/ui/CTABand";
 
 export const metadata: Metadata = pageMeta({
-  title: "Process",
+  title: "Our Installation Process",
   description:
-    "The MICROPULSE installation process: free consultation, free site visit, design & planning, proposal, professional installation, and testing & handover.",
+    "How a MicroPulse Solar Energy solar installation runs, step by step: free consultation, free site visit, design and planning, proposal, professional installation, and testing and handover.",
   path: "/process",
 });
 

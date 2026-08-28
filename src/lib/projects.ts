@@ -1,5 +1,5 @@
 /**
- * MICROPULSE project portfolio.
+ * MicroPulse Solar Energy project portfolio.
  *
  * ── HOW TO EDIT ───────────────────────────────────────────────────────────────
  * Every field except `id`, `title`, `category` and `images` is optional, and the
@@ -13,7 +13,7 @@
  *            viewer presses play — nothing is fetched before that.
  *
  * ── WHAT IS AND IS NOT VERIFIED ───────────────────────────────────────────────
- * The facility types below are the client's own: MICROPULSE has worked with
+ * The facility types below are the client's own: MicroPulse Solar Energy has worked with
  * hospitals, PSO petrol stations, PESI, Punjab College, and industrial,
  * commercial and residential sites. The descriptions characterise that work
  * honestly.
@@ -88,7 +88,7 @@ export const PROJECTS: Project[] = [
       "/images/maintenance.jpg",
     ],
     description:
-      "Healthcare sites are among the least forgiving places to work: theatres, cold chain and diagnostic equipment cannot be interrupted, and roof access has to be planned around a building that never closes. MICROPULSE handled the assessment, system design and installation, sequencing the work so clinical operations continued throughout.",
+      "Healthcare sites are among the least forgiving places to work: theatres, cold chain and diagnostic equipment cannot be interrupted, and roof access has to be planned around a building that never closes. MicroPulse Solar Energy handled the assessment, system design and installation, sequencing the work so clinical operations continued throughout.",
     location: "Lahore, Punjab",
     systemType: "Hybrid with battery backup",
     scope: [
@@ -111,7 +111,7 @@ export const PROJECTS: Project[] = [
       "/images/commercial.jpg",
     ],
     description:
-      "A fuel station runs its heaviest electrical load in daylight — forecourt canopy lighting, dispensing pumps and the site shop all draw at once. Solar matches that curve closely, so MICROPULSE designed and installed a system sized around daytime demand, working to the safety separation a fuel environment requires.",
+      "A fuel station runs its heaviest electrical load in daylight — forecourt canopy lighting, dispensing pumps and the site shop all draw at once. Solar matches that curve closely, so MicroPulse Solar Energy designed and installed a system sized around daytime demand, working to the safety separation a fuel environment requires.",
     location: "Bahawalpur, Punjab",
     systemType: "On-grid",
     scope: ["Site assessment", "System design", "Installation", "Commissioning"],
@@ -128,7 +128,7 @@ export const PROJECTS: Project[] = [
       "/images/proj4.jpg",
     ],
     description:
-      "A teaching campus consumes almost all of its power between morning and late afternoon, which makes it close to an ideal solar profile — generation and demand line up without needing storage to bridge them. MICROPULSE carried out the load study, designed the array around the available roof, and installed and handed over the system.",
+      "A teaching campus consumes almost all of its power between morning and late afternoon, which makes it close to an ideal solar profile — generation and demand line up without needing storage to bridge them. MicroPulse Solar Energy carried out the load study, designed the array around the available roof, and installed and handed over the system.",
     location: "Lahore, Punjab",
     systemType: "On-grid",
     scope: ["Load study", "System design", "Installation", "Handover"],
@@ -142,7 +142,7 @@ export const PROJECTS: Project[] = [
     // Crew installing across a broad low-rise institutional roof.
     images: ["/images/installation.jpg", "/images/commercial.jpg"],
     description:
-      "An institutional facility where the brief was steady daytime supply and a clean, well-documented installation. MICROPULSE assessed the site, designed the system around the usable roof area and existing electrical infrastructure, and completed the installation to the standard the building's operations required.",
+      "An institutional facility where the brief was steady daytime supply and a clean, well-documented installation. MicroPulse Solar Energy assessed the site, designed the system around the usable roof area and existing electrical infrastructure, and completed the installation to the standard the building's operations required.",
     location: "Lahore, Punjab",
     systemType: "On-grid",
     scope: ["Site assessment", "Design & planning", "Installation"],
@@ -174,7 +174,7 @@ export const PROJECTS: Project[] = [
     // Pitched-roof commercial installation, plus an array detail.
     images: ["/images/proj2.jpg", "/images/proj4.jpg"],
     description:
-      "A commercial building where roof space was limited and had to be laid out carefully around existing services and shading. MICROPULSE designed to the space available rather than to a round number, installed the system, and stayed on for after-sales support.",
+      "A commercial building where roof space was limited and had to be laid out carefully around existing services and shading. MicroPulse Solar Energy designed to the space available rather than to a round number, installed the system, and stayed on for after-sales support.",
     location: "Lahore, Punjab",
     systemType: "Hybrid",
     scope: ["Site assessment", "System design", "Installation", "After-sales support"],

@@ -4,9 +4,9 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { Contact } from "@/components/sections/Contact";
 
 export const metadata: Metadata = pageMeta({
-  title: "Contact",
+  title: "Contact Us in Lahore",
   description:
-    "Contact MicroPulse Solar Energy — book a free site visit or free consultation. Offices in Lahore and Bahawalpur. Call or WhatsApp our team.",
+    "Contact MicroPulse Solar Energy Pvt Ltd in Lahore — book a free site visit or free consultation. Offices in Bahria Town, Lahore and in Bahawalpur. Call or WhatsApp our team.",
   path: "/contact",
 });
 
@@ -22,7 +22,7 @@ export default function ContactPage() {
             <span className="text-gradient-solar">solar system.</span>
           </>
         }
-        intro="Reach the MicroPulse team by phone, WhatsApp, or at our Lahore and Bahawalpur offices."
+        intro="Reach MicroPulse Solar Energy Pvt Ltd by phone or WhatsApp, or visit our Lahore office at Park View Commercial, Bahria Town. We also have an office in Bahawalpur."
       />
       <Contact />
     </>

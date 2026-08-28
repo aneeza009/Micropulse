@@ -59,7 +59,7 @@ export function BrandMarquee() {
               <span className="text-gradient-solar">build with.</span>
             </>
           }
-          intro="MICROPULSE specifies A-grade inverters, panels and switchgear from established manufacturers, matched to what each system actually needs."
+          intro="MicroPulse Solar Energy specifies A-grade inverters, panels and switchgear from established manufacturers, matched to what each system actually needs."
           align="center"
         />
       </div>

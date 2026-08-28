@@ -26,7 +26,7 @@ export function WholesaleSupply() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-5 max-w-lg text-text-mid md:text-lg">
-                From our offices in Lahore and Bahawalpur, MicroPulse delivers
+                From our offices in Lahore and Bahawalpur, MicroPulse Solar Energy delivers
                 A-grade solar equipment nationwide — reliable stock, fair pricing
                 and dependable timelines.
               </p>

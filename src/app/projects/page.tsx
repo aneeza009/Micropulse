@@ -5,9 +5,9 @@ import { ProjectsExplorer } from "@/components/sections/ProjectsExplorer";
 import { CTABand } from "@/components/ui/CTABand";
 
 export const metadata: Metadata = pageMeta({
-  title: "Projects",
+  title: "Solar Projects",
   description:
-    "Solar and electrical projects delivered by MicroPulse Solar Energy across hospitals, petrol stations, educational campuses, industrial facilities and commercial sites in Pakistan.",
+    "Solar and electrical projects delivered by MicroPulse Solar Energy Pvt Ltd across hospitals, petrol stations, educational campuses, industrial facilities and commercial sites in Lahore and across Pakistan.",
   path: "/projects",
 });
 
@@ -23,7 +23,7 @@ export default function ProjectsPage() {
             <span className="text-gradient-solar">infrastructure.</span>
           </>
         }
-        intro="MICROPULSE delivers solar and electrical solutions across commercial, institutional, industrial and other demanding environments — where uptime, safety and clean execution are not negotiable."
+        intro="From Lahore, MicroPulse Solar Energy Pvt Ltd delivers solar and electrical solutions across commercial, institutional, industrial and other demanding environments — where uptime, safety and clean execution are not negotiable."
       />
       <ProjectsExplorer />
       <CTABand
